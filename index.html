@@ -425,6 +425,18 @@ html, body {
   /* Nav */
   .arrow { display: none; }
   .page-num { font-size: max(8px, 2.5vw); }
+
+  /* Byline: centered below dots on mobile */
+  .byline {
+    position: fixed;
+    bottom: 1.8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0.18;
+    font-size: max(8px, 2.2vw);
+  }
+  .dots { bottom: 5.5vh; }
 }
 </style>
 </head>
@@ -514,7 +526,6 @@ REPOS_DATA.forEach((repo, i) => {
       </div>
       <div class="repo-right">
         <div class="star-count">★ ${repo.stars}</div>
-        <div class="star-label" data-fr="Étoiles" data-en="Stars">Étoiles</div>
         <div class="week-stars" data-fr="${repo.fr.weekStars}" data-en="${repo.en.weekStars}">${repo.fr.weekStars}</div>
         <div class="lang-tag">${repo.lang}</div>
         <div class="security-badge">${repo.security}</div>
