@@ -52,14 +52,23 @@ def generate(repos_json_path: str):
         print("Corrige repos.json avant de générer.\n")
         sys.exit(1)
 
+    is_first_issue = (week == 16 and year == 2026)  # Numéro de lancement
     issue_meta = {
         "fr": {
-            "kicker": f"Numéro №{week:02d} · Semaine {week}, {year} · Audité sécurité",
-            "subtitle": f"Les {len(repos)} repos qui valent votre attention cette semaine."
+            "kicker": (
+                f"Numéro №{week:02d} · Sélection de lancement · Audité sécurité"
+                if is_first_issue else
+                f"Numéro №{week:02d} · Semaine {week}, {year} · Audité sécurité"
+            ),
+            "subtitle": f"Les {len(repos)} repos qui valent notre attention cette semaine."
         },
         "en": {
-            "kicker": f"Issue №{week:02d} · Week {week}, {year} · Security-Audited",
-            "subtitle": f"The {len(repos)} repos worth your attention this week."
+            "kicker": (
+                f"Issue №{week:02d} · Launch Selection · Security-Audited"
+                if is_first_issue else
+                f"Issue №{week:02d} · Week {week}, {year} · Security-Audited"
+            ),
+            "subtitle": f"The {len(repos)} repos worth our attention this week."
         }
     }
 

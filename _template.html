@@ -191,11 +191,11 @@ html, body {
 }
 .star-icon {
   font-family: 'Playfair Display', serif;
-  font-size: max(18px, 2.8vw);
+  font-size: max(16px, 4vw);
   font-weight: 900;
   line-height: 1;
   flex-shrink: 0;
-  padding-top: 0.32em;
+  padding-top: 0.35em;
 }
 .star-info {
   display: flex;
@@ -429,7 +429,7 @@ html, body {
 
   .ghost-rank { font-size: 52vw; opacity: 0.025; }
   .repo-headline { font-size: 9vw; }
-  .star-icon { font-size: 15vw; }
+  .star-icon { font-size: 9vw; padding-top: 0.5em; }
   .star-count { font-size: 15vw; }
   .star-label { font-size: max(8px, 2.2vw); }
   .week-stars { font-size: max(9px, 2.5vw); }
@@ -445,17 +445,47 @@ html, body {
   .arrow { display: none; }
   .page-num { font-size: max(8px, 2.5vw); }
 
-  /* Byline: centered below dots on mobile */
+  /* Bottom nav bar — dots + byline in a fixed bar */
+  .dots {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
+    justify-content: center;
+    padding: 10px 0 calc(12px + env(safe-area-inset-bottom));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    background: rgba(242,240,235,0.90);
+    border-top: 1px solid rgba(13,13,13,0.08);
+  }
+  .dots.dark-bar {
+    background: rgba(10,10,10,0.88);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .dots.light-bar {
+    background: rgba(242,240,235,0.90);
+    border-top: 1px solid rgba(13,13,13,0.08);
+  }
+
+  /* Byline inside the bar, below dots */
   .byline {
     position: fixed;
-    bottom: 1.8vh;
+    bottom: calc(36px + env(safe-area-inset-bottom));
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    opacity: 0.18;
+    opacity: 0.22;
     font-size: max(8px, 2.2vw);
+    pointer-events: auto;
+    z-index: 1001;
   }
-  .dots { bottom: 5.5vh; }
+
+  /* Extra padding so content doesn't hide behind the bar */
+  .repo-right { padding-bottom: 80px; }
+  .cover-content { padding-bottom: 80px; }
+  .back-content { padding-bottom: 80px; }
 }
 </style>
 </head>
@@ -597,6 +627,13 @@ for (let i = 0; i < TOTAL; i++) {
 function updateUI() {
   dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
   document.getElementById('pageNum').textContent = `${current + 1} / ${TOTAL}`;
+  // Sync dots bar bg with current page theme (mobile only)
+  if (window.innerWidth <= 768) {
+    const pages = document.querySelectorAll('.page');
+    const isDark = pages[current] && pages[current].classList.contains('dark');
+    dotsEl.classList.toggle('dark-bar', isDark);
+    dotsEl.classList.toggle('light-bar', !isDark);
+  }
 }
 
 function goTo(n) {

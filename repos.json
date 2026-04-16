@@ -21,114 +21,6 @@
       }
     },
     {
-      "category": "AI FRAMEWORK",
-      "path": "NousResearch / hermes-agent",
-      "stars": "90.5k",
-      "lang": "Python",
-      "security": "🟡 Vigilance — dépendances lourdes, appels API cloud",
-      "securityNote": {
-        "fr": "Requiert des clés API cloud (OpenAI, Anthropic...). Vos prompts transitent par leurs serveurs. Utilisez en dev, pas avec des données sensibles.",
-        "en": "Requires cloud API keys (OpenAI, Anthropic...). Your prompts go through their servers. Keep it to dev environments, away from sensitive data."
-      },
-      "tags": ["claude-agents", "multi-agent", "memory", "python"],
-      "fr": {
-        "headline": "L'agent qui grandit avec vous",
-        "description": "Hermes Agent est un framework d'agents IA complet pensé pour les tâches longues, l'apprentissage continu et l'intégration profonde d'outils.",
-        "weekStars": "↑ 53,1k cette semaine",
-        "whyItMatters": "L'architecture mémoire à trois niveaux (working / episodic / semantic) vaut le détour, même si vous n'utilisez jamais Hermes. Reproduisez ce pattern dans vos propres agents. C'est là que réside toute la valeur."
-      },
-      "en": {
-        "headline": "The agent that grows with you",
-        "description": "Hermes Agent is a full-stack AI agent framework built for long-horizon tasks, continuous learning, and deep tool integration.",
-        "weekStars": "↑ 53.1k this week",
-        "whyItMatters": "The hierarchical memory architecture (working / episodic / semantic) is the real takeaway, even if you never use Hermes directly. Replicate this pattern in your own agent systems. That's where the value is."
-      }
-    },
-    {
-      "category": "MULTI-AGENT",
-      "path": "multica-ai / multica",
-      "stars": "13.8k",
-      "lang": "TypeScript",
-      "security": "🟡 Vigilance — cloud managé, vérifier la rétention des données",
-      "securityNote": {
-        "fr": "Plateforme SaaS : vos agents et leurs échanges passent par leurs serveurs. Vérifiez leur politique de rétention avant de connecter des données métier.",
-        "en": "SaaS platform: your agents and their exchanges go through their servers. Check their data retention policy before connecting any business data."
-      },
-      "tags": ["multi-agent", "workflow", "typescript", "automation"],
-      "fr": {
-        "headline": "Transformez vos agents en vrais coéquipiers",
-        "description": "La plateforme open-source de gestion d'agents : orchestrez des agents IA spécialisés avec état partagé, rôles définis et contexte persistant.",
-        "weekStars": "↑ 10,9k cette semaine",
-        "whyItMatters": "Orchestrer des agents sans gérer la plomberie soi-même, c'est le pitch. Et c'est crédible : le modèle d'état partagé entre agents est véritablement nouveau. La plupart des alternatives open-source font comme si la mémoire n'existait pas."
-      },
-      "en": {
-        "headline": "Turn coding agents into real teammates",
-        "description": "The open-source managed agents platform. Orchestrate specialized AI agents with shared state, defined roles, and persistent context across tasks.",
-        "weekStars": "↑ 10.9k this week",
-        "whyItMatters": "Managed agent orchestration without the plumbing. The shared-state model between agents is genuinely novel, and most open-source alternatives don't even try. Worth benchmarking against custom setups."
-      }
-    },
-    {
-      "category": "AI CODING",
-      "path": "coleam00 / Archon",
-      "stars": "18.3k",
-      "lang": "TypeScript",
-      "security": "🟢 Safe — exécution locale, aucune télémétrie détectée",
-      "tags": ["agentic-coding", "workflow", "typescript", "claude-code"],
-      "fr": {
-        "headline": "Rendez le coding IA déterministe",
-        "description": "Le premier constructeur de harness open-source pour le coding IA. Définissez des workflows reproductibles et testables qui produisent des résultats constants.",
-        "weekStars": "↑ 4,3k cette semaine",
-        "whyItMatters": "Le coding IA est non-déterministe par nature. Votre CI/CD, lui, n'a pas ce luxe. Le harness d'Archon est ce qui manque entre 'Claude a généré quelque chose' et 'ça tient en prod'."
-      },
-      "en": {
-        "headline": "Make AI coding deterministic",
-        "description": "The first open-source harness builder for AI coding. Define repeatable, testable workflows that produce consistent output every time.",
-        "weekStars": "↑ 4.3k this week",
-        "whyItMatters": "AI coding is non-deterministic by nature. Your CI/CD pipeline cannot afford that. Archon's harness model fills the gap between 'Claude wrote something' and 'this ships to prod'."
-      }
-    },
-    {
-      "category": "DOCUMENT AI",
-      "path": "microsoft / markitdown",
-      "stars": "109.6k",
-      "lang": "Python",
-      "security": "🟢 Safe — MIT, maintenu par Microsoft, aucun appel externe par défaut",
-      "tags": ["python", "automation", "pdf", "workflow"],
-      "fr": {
-        "headline": "Tous les formats, une seule sortie Markdown",
-        "description": "Outil Python pour convertir fichiers et documents bureautiques en Markdown (PDF, DOCX, XLSX, images, transcription audio et plus).",
-        "weekStars": "↑ 15,8k cette semaine",
-        "whyItMatters": "L'étape que tout le monde oublie jusqu'au moment où elle manque. MarkItDown transforme vos fichiers réels (PDF, DOCX, audio) en Markdown propre, directement exploitable par un LLM. 109k étoiles. Ça parle."
-      },
-      "en": {
-        "headline": "Every file format, one Markdown output",
-        "description": "Python tool for converting files and office documents to Markdown (PDF, DOCX, XLSX, images, audio transcription, and more).",
-        "weekStars": "↑ 15.8k this week",
-        "whyItMatters": "The pre-processing step everyone forgets until they need it. MarkItDown converts messy real-world files into clean Markdown that LLMs can actually use. 109k stars. It speaks for itself."
-      }
-    },
-    {
-      "category": "AI SKILLS",
-      "path": "addyosmani / agent-skills",
-      "stars": "16.0k",
-      "lang": "Shell",
-      "security": "🟢 Safe — Shell/Markdown uniquement, skills en lecture seule",
-      "tags": ["claude-code", "skills", "agentic-coding", "productivity"],
-      "fr": {
-        "headline": "Des skills prod pour vos agents de coding",
-        "description": "Une collection de skills d'ingénierie production-grade conçus spécifiquement pour les agents de coding IA (performance, tests, architecture).",
-        "weekStars": "↑ 6,7k cette semaine",
-        "whyItMatters": "Addy Osmani (Google Chrome) qui sélectionne des skills Claude Code, ça mérite un regard. Pas des démos de tuto : des patterns de prod d'ingénieurs qui livrent vraiment à grande échelle."
-      },
-      "en": {
-        "headline": "Production-grade skills for coding agents",
-        "description": "A curated collection of production-grade engineering skills built specifically for AI coding agents (performance, testing, architecture).",
-        "weekStars": "↑ 6.7k this week",
-        "whyItMatters": "Addy Osmani (Google Chrome) curating Claude Code skills is a strong signal. Not toy examples. Production patterns from engineers who ship at scale. Direct drop-in value."
-      }
-    },
-    {
       "category": "AI MEMORY",
       "path": "thedotmack / claude-mem",
       "stars": "58.1k",
@@ -149,27 +41,67 @@
       }
     },
     {
-      "category": "FINANCE AI",
-      "path": "virattt / ai-hedge-fund",
-      "stars": "55.2k",
+      "category": "AI MEMORY",
+      "path": "MemPalace / mempalace",
+      "stars": "46.7k",
       "lang": "Python",
-      "security": "🟡 Vigilance — appels APIs financières, vérifier les permissions",
+      "security": "🟡 Vigilance — télémétrie ChromaDB active, 5 issues sécu ouvertes",
       "securityNote": {
-        "fr": "Se connecte à des APIs financières tierces. Utilisez des clés en lecture seule et un compte sandbox. Jamais un compte réel sans audit préalable.",
-        "en": "Connects to third-party financial APIs. Use read-only keys and a sandbox account for testing. Never connect a live account without a prior audit."
+        "fr": "Télémétrie PostHog active par défaut via ChromaDB. Ajouter ANONYMIZED_TELEMETRY=False dans votre env. Faire chmod 600 sur les fichiers .sqlite3 générés. Issues sécu ouvertes sur le repo, correctifs en cours.",
+        "en": "PostHog telemetry active by default via ChromaDB. Add ANONYMIZED_TELEMETRY=False to your env. Run chmod 600 on generated .sqlite3 files. Open security issues on the repo, fixes in progress."
       },
-      "tags": ["multi-agent", "python", "pipeline", "llm-framework"],
+      "tags": ["memory", "mcp", "claude-code", "productivity"],
       "fr": {
-        "headline": "Douze analystes IA, un seul hedge fund",
-        "description": "Une équipe d'agents IA pour la finance avec des spécialistes du value investing, de l'analyse de sentiment et de l'optimisation de portefeuille.",
-        "weekStars": "↑ 4,3k cette semaine",
-        "whyItMatters": "Le hedge fund, c'est l'habillage. Ce qui vaut vraiment, c'est comment chaque agent reçoit un rôle précis, des outils limités, et passe une sortie structurée au suivant. Reprenez ce modèle ailleurs. Il tient."
+        "headline": "La mémoire qui s'enrichit à chaque session",
+        "description": "Un plugin qui construit une mémoire structurée de votre travail, session après session. Il repère les connexions entre vos projets, décisions et notes — et les retrouve quand vous en avez besoin.",
+        "weekStars": "↑ 2,1k cette semaine",
+        "whyItMatters": "claude-mem capture tout sans distinction. MemPalace va plus loin : il comprend les liens entre vos informations, pas juste les informations elles-mêmes. Les deux ensemble couvrent des cas que ni l'un ni l'autre ne gère seul. On les utilise en parallèle."
       },
       "en": {
-        "headline": "Twelve AI analysts, one hedge fund",
-        "description": "An AI hedge fund team with specialist agents for value investing, sentiment analysis, risk management, and portfolio optimization.",
-        "weekStars": "↑ 4.3k this week",
-        "whyItMatters": "The hedge fund is the wrapper. What's actually useful here is the architecture: each agent has one job, limited tool access, and passes structured output downstream. Take this pattern anywhere. It holds up."
+        "headline": "Memory that compounds with every session",
+        "description": "A plugin that builds structured memory from your work, session after session. It maps connections between your projects, decisions and notes — and surfaces them when you need them.",
+        "weekStars": "↑ 2.1k this week",
+        "whyItMatters": "claude-mem captures everything flat. MemPalace maps relationships between information in a graph. Together they cover gaps neither handles alone. We run both in parallel."
+      }
+    },
+    {
+      "category": "AI CODING",
+      "path": "tirth8205 / code-review-graph",
+      "stars": "10.4k",
+      "lang": "Python",
+      "security": "🟢 Safe — SQLite local, lecture seule, CVEs fastmcp patchées (>=2.14), MIT",
+      "tags": ["code-review", "claude-code", "python", "token-optimization"],
+      "fr": {
+        "headline": "8 fois moins de tokens sur chaque code review",
+        "description": "Un outil qui cartographie votre code source en une carte de relations. Claude navigue cette carte plutôt que de parcourir chaque fichier un par un — résultat : 8x moins de ressources consommées sur les analyses.",
+        "weekStars": "↑ 890 cette semaine",
+        "whyItMatters": "Le principe : au lieu de lire chaque fichier un par un, Claude navigue une carte de votre code déjà construite. Le repo annonce -8x sur les analyses. On l'a installé, testé, ça tient. Sur un projet actif, la différence se sent sur la consommation."
+      },
+      "en": {
+        "headline": "8x fewer tokens on every code review",
+        "description": "A tool that maps your codebase into a graph of relationships. Claude navigates the graph instead of reading every file one by one — resulting in 8x fewer resources spent on code analysis.",
+        "weekStars": "↑ 890 this week",
+        "whyItMatters": "Instead of reading every file one by one, Claude navigates a pre-built map of your codebase. The repo claims -8x on code analysis. We installed it, tested it, and it holds up. On an active project, you feel the difference on your usage."
+      }
+    },
+    {
+      "category": "CLAUDE CODE",
+      "path": "shanraisshan / claude-code-best-practice",
+      "stars": "45.1k",
+      "lang": "HTML",
+      "security": "🟢 Safe — HTML/Markdown pur, zéro runtime, zéro dépendance, MIT",
+      "tags": ["claude-code", "productivity", "agentic-coding", "skills"],
+      "fr": {
+        "headline": "Toutes les features Claude Code en un fichier",
+        "description": "Documentation mise à jour quotidiennement par la communauté : Agent Teams, Channels beta, Auto Mode, Ultraplan, Ralph Wiggum Loop, Remote Control /rc.",
+        "weekStars": "↑ 8,3k cette semaine",
+        "whyItMatters": "On avait manqué des features entières. Agent Teams en parallèle, /rc pour contrôle à distance, Auto Mode... tout était là depuis un moment. Ce repo, c'est la doc qu'Anthropic n'a pas encore écrite."
+      },
+      "en": {
+        "headline": "Every Claude Code feature in one file",
+        "description": "Community-maintained documentation updated daily: Agent Teams, Channels beta, Auto Mode, Ultraplan, Ralph Wiggum Loop, Remote Control /rc.",
+        "weekStars": "↑ 8.3k this week",
+        "whyItMatters": "We had missed entire features. Parallel Agent Teams, /rc for remote control, Auto Mode... it was all there. This repo is the documentation Anthropic hasn't written yet."
       }
     }
   ]
