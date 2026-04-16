@@ -52,21 +52,29 @@ def generate(repos_json_path: str):
         print("Corrige repos.json avant de générer.\n")
         sys.exit(1)
 
-    is_first_issue = (week == 16 and year == 2026)  # Numéro de lancement
+    # Issue number: offset from launch week (week 16, 2026 = №1)
+    LAUNCH_WEEK = 16
+    LAUNCH_YEAR = 2026
+    if year == LAUNCH_YEAR:
+        issue_num = week - LAUNCH_WEEK + 1
+    else:
+        issue_num = (year - LAUNCH_YEAR) * 52 + week - LAUNCH_WEEK + 1
+
+    is_first_issue = (issue_num == 1)
     issue_meta = {
         "fr": {
             "kicker": (
-                f"Numéro №{week:02d} · Sélection de lancement · Audité sécurité"
+                f"Numéro №{issue_num:02d} · Sélection de lancement · Audité sécurité"
                 if is_first_issue else
-                f"Numéro №{week:02d} · Semaine {week}, {year} · Audité sécurité"
+                f"Numéro №{issue_num:02d} · Semaine {week}, {year} · Audité sécurité"
             ),
             "subtitle": f"Les {len(repos)} repos qui valent notre attention cette semaine."
         },
         "en": {
             "kicker": (
-                f"Issue №{week:02d} · Launch Selection · Security-Audited"
+                f"Issue №{issue_num:02d} · Launch Selection · Security-Audited"
                 if is_first_issue else
-                f"Issue №{week:02d} · Week {week}, {year} · Security-Audited"
+                f"Issue №{issue_num:02d} · Week {week}, {year} · Security-Audited"
             ),
             "subtitle": f"The {len(repos)} repos worth our attention this week."
         }
@@ -83,7 +91,7 @@ def generate(repos_json_path: str):
     with open("index.html", "w") as f:
         f.write(html)
 
-    print(f"✅ Generated index.html — {len(repos)} repos — Issue №{week:02d}")
+    print(f"✅ Generated index.html — {len(repos)} repos — Issue №{issue_num:02d}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
