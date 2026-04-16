@@ -9,15 +9,15 @@
       "tags": ["claude-code", "prompt-engineering", "agentic-coding"],
       "fr": {
         "headline": "Le CLAUDE.md qui a tout changé",
-        "description": "Un seul fichier CLAUDE.md conçu pour améliorer fondamentalement le comportement de Claude Code — inspiré de la philosophie d'ingénierie de Karpathy.",
+        "description": "Un seul fichier CLAUDE.md conçu pour améliorer fondamentalement le comportement de Claude Code, inspiré de la philosophie d'ingénierie de Karpathy.",
         "weekStars": "↑ 30,9k cette semaine",
-        "whyItMatters": "Un seul fichier. Une amélioration mesurable de la façon dont Claude Code raisonne et agit. Lisez-le, adaptez les patterns à votre setup. Le retour est immédiat — et ça, c'est rare."
+        "whyItMatters": "Un seul fichier qui améliore concrètement la façon dont Claude Code raisonne et agit. Lisez-le, adaptez les patterns à votre setup. Le retour est immédiat. Ça, c'est assez rare pour le noter."
       },
       "en": {
         "headline": "The CLAUDE.md that changed everything",
-        "description": "A single CLAUDE.md file designed to fundamentally improve Claude Code behavior — inspired by Karpathy's engineering philosophy.",
+        "description": "A single CLAUDE.md file designed to fundamentally improve Claude Code behavior, inspired by Karpathy's engineering philosophy.",
         "weekStars": "↑ 30.9k this week",
-        "whyItMatters": "A single file that measurably improves how any Claude Code instance reasons and acts. Read it, steal the patterns that work for your setup. The ROI is immediate."
+        "whyItMatters": "One file that concretely improves how any Claude Code instance reasons and acts. Read it, adapt the patterns to your setup. The ROI is immediate. That alone makes it worth your time."
       }
     },
     {
@@ -31,13 +31,13 @@
         "headline": "L'agent qui grandit avec vous",
         "description": "Hermes Agent est un framework d'agents IA complet pensé pour les tâches longues, l'apprentissage continu et l'intégration profonde d'outils.",
         "weekStars": "↑ 53,1k cette semaine",
-        "whyItMatters": "La vraie leçon n'est pas dans le framework — c'est dans l'architecture mémoire à trois niveaux (working / episodic / semantic). Même si vous n'utilisez jamais Hermes, ce pattern mérite d'atterrir dans vos propres agents."
+        "whyItMatters": "L'architecture mémoire à trois niveaux (working / episodic / semantic) vaut le détour, même si vous n'utilisez jamais Hermes. Reproduisez ce pattern dans vos propres agents. C'est là que réside toute la valeur."
       },
       "en": {
         "headline": "The agent that grows with you",
         "description": "Hermes Agent is a full-stack AI agent framework built for long-horizon tasks, continuous learning, and deep tool integration.",
         "weekStars": "↑ 53.1k this week",
-        "whyItMatters": "The hierarchical memory architecture (working / episodic / semantic) is the real lesson here. Even if you don't use Hermes directly, the pattern is worth understanding and replicating in your own agent systems."
+        "whyItMatters": "The hierarchical memory architecture (working / episodic / semantic) is the real takeaway, even if you never use Hermes directly. Replicate this pattern in your own agent systems. That's where the value is."
       }
     },
     {
@@ -49,15 +49,15 @@
       "tags": ["multi-agent", "workflow", "typescript", "automation"],
       "fr": {
         "headline": "Transformez vos agents en vrais coéquipiers",
-        "description": "La plateforme open-source de gestion d'agents — orchestrez des agents IA spécialisés avec état partagé, rôles définis et contexte persistant.",
+        "description": "La plateforme open-source de gestion d'agents : orchestrez des agents IA spécialisés avec état partagé, rôles définis et contexte persistant.",
         "weekStars": "↑ 10,9k cette semaine",
-        "whyItMatters": "Orchestrer des agents sans gérer la plomberie soi-même — c'est le pitch. Le modèle d'état partagé entre agents est véritablement nouveau : la plupart des alternatives open-source font comme si la mémoire n'existait pas."
+        "whyItMatters": "Orchestrer des agents sans gérer la plomberie soi-même, c'est le pitch. Et c'est crédible : le modèle d'état partagé entre agents est véritablement nouveau. La plupart des alternatives open-source font comme si la mémoire n'existait pas."
       },
       "en": {
         "headline": "Turn coding agents into real teammates",
-        "description": "The open-source managed agents platform — orchestrate specialized AI agents with shared state, roles, and persistent context across tasks.",
+        "description": "The open-source managed agents platform. Orchestrate specialized AI agents with shared state, defined roles, and persistent context across tasks.",
         "weekStars": "↑ 10.9k this week",
-        "whyItMatters": "Managed agent orchestration without the plumbing. The shared-state model between agents is genuinely novel — most open-source alternatives are stateless. Worth benchmarking against custom setups."
+        "whyItMatters": "Managed agent orchestration without the plumbing. The shared-state model between agents is genuinely novel, and most open-source alternatives don't even try. Worth benchmarking against custom setups."
       }
     },
     {
@@ -71,13 +71,13 @@
         "headline": "Rendez le coding IA déterministe",
         "description": "Le premier constructeur de harness open-source pour le coding IA. Définissez des workflows reproductibles et testables qui produisent des résultats constants.",
         "weekStars": "↑ 4,3k cette semaine",
-        "whyItMatters": "Le coding IA est non-déterministe par nature. Votre pipeline CI/CD, lui, n'a pas le droit de l'être. Le harness d'Archon est le chaînon manquant entre 'Claude a produit quelque chose' et 'ça tient en prod'."
+        "whyItMatters": "Le coding IA est non-déterministe par nature. Votre CI/CD, lui, n'a pas ce luxe. Le harness d'Archon est ce qui manque entre 'Claude a généré quelque chose' et 'ça tient en prod'."
       },
       "en": {
         "headline": "Make AI coding deterministic",
         "description": "The first open-source harness builder for AI coding. Define repeatable, testable workflows that produce consistent output every time.",
         "weekStars": "↑ 4.3k this week",
-        "whyItMatters": "The core insight: AI coding is non-deterministic by default, but your CI/CD pipeline cannot be. Archon's harness model is the missing layer between 'Claude wrote some code' and 'this ships to prod'."
+        "whyItMatters": "AI coding is non-deterministic by nature. Your CI/CD pipeline cannot afford that. Archon's harness model fills the gap between 'Claude wrote something' and 'this ships to prod'."
       }
     },
     {
@@ -89,15 +89,15 @@
       "tags": ["python", "automation", "pdf", "workflow"],
       "fr": {
         "headline": "Tous les formats, une seule sortie Markdown",
-        "description": "Outil Python pour convertir fichiers et documents bureautiques en Markdown — PDF, DOCX, XLSX, images, transcription audio et plus.",
+        "description": "Outil Python pour convertir fichiers et documents bureautiques en Markdown (PDF, DOCX, XLSX, images, transcription audio et plus).",
         "weekStars": "↑ 15,8k cette semaine",
-        "whyItMatters": "L'étape que tout le monde oublie jusqu'au moment où elle manque. MarkItDown transforme vos fichiers réels — PDF, DOCX, audio — en Markdown propre, prêt à nourrir un LLM. 109k étoiles, zéro mauvaises surprises."
+        "whyItMatters": "L'étape que tout le monde oublie jusqu'au moment où elle manque. MarkItDown transforme vos fichiers réels (PDF, DOCX, audio) en Markdown propre, directement exploitable par un LLM. 109k étoiles. Ça parle."
       },
       "en": {
         "headline": "Every file format, one Markdown output",
-        "description": "Python tool for converting files and office documents to Markdown — PDF, DOCX, XLSX, images, audio transcription, and more.",
+        "description": "Python tool for converting files and office documents to Markdown (PDF, DOCX, XLSX, images, audio transcription, and more).",
         "weekStars": "↑ 15.8k this week",
-        "whyItMatters": "The missing pre-processing step for any RAG pipeline or document-driven agent. Converts messy real-world files into clean Markdown that LLMs can actually reason about. 109k stars don't lie."
+        "whyItMatters": "The pre-processing step everyone forgets until they need it. MarkItDown converts messy real-world files into clean Markdown that LLMs can actually use. 109k stars. It speaks for itself."
       }
     },
     {
@@ -109,15 +109,15 @@
       "tags": ["claude-code", "skills", "agentic-coding", "productivity"],
       "fr": {
         "headline": "Des skills prod pour vos agents de coding",
-        "description": "Une collection de skills d'ingénierie production-grade conçus spécifiquement pour les agents de coding IA — performance, tests, architecture.",
+        "description": "Une collection de skills d'ingénierie production-grade conçus spécifiquement pour les agents de coding IA (performance, tests, architecture).",
         "weekStars": "↑ 6,7k cette semaine",
-        "whyItMatters": "Quand Addy Osmani (Google Chrome) prend le temps de sélectionner des skills Claude Code, ça mérite l'attention. Ce ne sont pas des démos — ce sont des patterns de prod issus d'ingénieurs qui livrent à grande échelle."
+        "whyItMatters": "Addy Osmani (Google Chrome) qui sélectionne des skills Claude Code, ça mérite un regard. Pas des démos de tuto : des patterns de prod d'ingénieurs qui livrent vraiment à grande échelle."
       },
       "en": {
         "headline": "Production-grade skills for coding agents",
-        "description": "A curated collection of production-grade engineering skills built specifically for AI coding agents — performance, testing, architecture.",
+        "description": "A curated collection of production-grade engineering skills built specifically for AI coding agents (performance, testing, architecture).",
         "weekStars": "↑ 6.7k this week",
-        "whyItMatters": "Addy Osmani (Google Chrome) curating Claude Code skills is a strong signal. These aren't toy examples — they're production patterns from engineers shipping at scale. Direct drop-in value."
+        "whyItMatters": "Addy Osmani (Google Chrome) curating Claude Code skills is a strong signal. Not toy examples. Production patterns from engineers who ship at scale. Direct drop-in value."
       }
     },
     {
@@ -129,15 +129,15 @@
       "tags": ["claude-code", "memory", "mcp", "productivity"],
       "fr": {
         "headline": "Claude se souvient de tout, toujours",
-        "description": "Un plugin Claude Code qui capture automatiquement chaque action, décision et artefact pendant les sessions — zéro intervention manuelle.",
+        "description": "Un plugin Claude Code qui capture automatiquement chaque action, décision et artefact pendant les sessions (zéro intervention manuelle).",
         "weekStars": "↑ 10,8k cette semaine",
-        "whyItMatters": "La mémoire persistante, c'est le chaînon manquant de Claude Code. Ce plugin le comble sans demander le moindre effort : auto-capture de chaque action, décision, artefact. Fini les 'on en était où déjà ?'"
+        "whyItMatters": "La mémoire persistante manque à Claude Code, et tout le monde le sait. Ce plugin règle ça sans rien vous demander : il capture automatiquement actions, décisions, artefacts. Plus de 'on en était où, déjà ?'"
       },
       "en": {
         "headline": "Claude remembers everything, always",
-        "description": "A Claude Code plugin that automatically captures every action, decision, and artifact during sessions — zero manual intervention required.",
+        "description": "A Claude Code plugin that automatically captures every action, decision, and artifact during sessions (zero manual intervention required).",
         "weekStars": "↑ 10.8k this week",
-        "whyItMatters": "Persistent memory is the single biggest gap in Claude Code workflows. This plugin closes it without any manual effort. The auto-capture model means you never lose context between sessions."
+        "whyItMatters": "Persistent memory is the biggest gap in Claude Code workflows, and everyone knows it. This plugin closes it without asking anything of you. Auto-capture across actions, decisions, artifacts. Never lose context again."
       }
     },
     {
@@ -149,15 +149,15 @@
       "tags": ["multi-agent", "python", "pipeline", "llm-framework"],
       "fr": {
         "headline": "Douze analystes IA, un seul hedge fund",
-        "description": "Une équipe d'agents IA pour la finance — agents spécialisés pour le value investing, l'analyse de sentiment et l'optimisation de portefeuille.",
+        "description": "Une équipe d'agents IA pour la finance avec des spécialistes du value investing, de l'analyse de sentiment et de l'optimisation de portefeuille.",
         "weekStars": "↑ 4,3k cette semaine",
-        "whyItMatters": "Le hedge fund, c'est le prétexte. La vraie valeur, c'est l'architecture : chaque agent a un rôle précis, un accès limité aux outils, et passe une sortie structurée à son successeur. Une référence propre, déclinable dans n'importe quel domaine."
+        "whyItMatters": "Le hedge fund, c'est l'habillage. Ce qui vaut vraiment, c'est comment chaque agent reçoit un rôle précis, des outils limités, et passe une sortie structurée au suivant. Reprenez ce modèle ailleurs. Il tient."
       },
       "en": {
         "headline": "Twelve AI analysts, one hedge fund",
-        "description": "An AI Hedge Fund Team — specialized agents for value investing, sentiment analysis, risk management, and portfolio optimization.",
+        "description": "An AI hedge fund team with specialist agents for value investing, sentiment analysis, risk management, and portfolio optimization.",
         "weekStars": "↑ 4.3k this week",
-        "whyItMatters": "The real value isn't finance — it's the multi-specialist agent pattern. Each agent has a narrow job, strict tool access, and passes structured output downstream. A clean reference architecture for any domain."
+        "whyItMatters": "The hedge fund is the wrapper. What's actually useful here is the architecture: each agent has one job, limited tool access, and passes structured output downstream. Take this pattern anywhere. It holds up."
       }
     }
   ]
