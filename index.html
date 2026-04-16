@@ -183,6 +183,23 @@ html, body {
 }
 
 /* ── RIGHT COLUMN ───────────────────────────────────────────────── */
+.star-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  flex-wrap: wrap;
+}
+.star-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: max(38px, 6.5vw);
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.star-info {
+  display: flex;
+  flex-direction: column;
+}
 .star-count {
   font-family: 'Playfair Display', serif;
   font-size: max(38px, 6.5vw);
@@ -193,7 +210,7 @@ html, body {
 }
 
 .star-label { font-size: max(9px, 0.65vw); letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.32; margin-bottom: 1vh; }
-.week-stars { font-size: max(10px, 0.7vw); letter-spacing: 0.1em; opacity: 0.42; margin-bottom: 3.5vh; }
+.week-stars { font-size: max(10px, 0.7vw); letter-spacing: 0.1em; opacity: 0.62; margin-bottom: 3.5vh; }
 
 .lang-tag {
   display: inline-block;
@@ -411,6 +428,7 @@ html, body {
 
   .ghost-rank { font-size: 52vw; opacity: 0.025; }
   .repo-headline { font-size: 9vw; }
+  .star-icon { font-size: 15vw; }
   .star-count { font-size: 15vw; }
   .star-label { font-size: max(8px, 2.2vw); }
   .week-stars { font-size: max(9px, 2.5vw); }
@@ -525,8 +543,13 @@ REPOS_DATA.forEach((repo, i) => {
         </div>
       </div>
       <div class="repo-right">
-        <div class="star-count">★ ${repo.stars}</div>
-        <div class="week-stars" data-fr="${repo.fr.weekStars}" data-en="${repo.en.weekStars}">${repo.fr.weekStars}</div>
+        <div class="star-row">
+          <span class="star-icon">★</span>
+          <div class="star-info">
+            <span class="star-count">${repo.stars}</span>
+            <div class="week-stars" data-fr="${repo.fr.weekStars}" data-en="${repo.en.weekStars}">${repo.fr.weekStars}</div>
+          </div>
+        </div>
         <div class="lang-tag">${repo.lang}</div>
         <div class="security-badge">${repo.security}</div>
         ${repo.securityNote ? `<div class="security-note" data-fr="${repo.securityNote.fr}" data-en="${repo.securityNote.en}">${repo.securityNote.fr}</div>` : ''}
