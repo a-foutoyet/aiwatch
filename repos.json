@@ -1,0 +1,100 @@
+{
+  "repos": [
+    {
+      "category": "AI AGENTS",
+      "headline": "The CLAUDE.md that changed everything",
+      "path": "forrestchang / andrej-karpathy-skills",
+      "description": "A single CLAUDE.md file designed to fundamentally improve Claude Code behavior — inspired by Karpathy's engineering philosophy.",
+      "stars": "44.2k",
+      "weekStars": "↑ 30.9k this week",
+      "lang": "Markdown",
+      "security": "🟢 Safe — Markdown only, zero runtime, zero deps",
+      "tags": ["claude-code", "prompt-engineering", "agentic-coding"],
+      "whyItMatters": "A single file that measurably improves how any Claude Code instance reasons and acts. Read it, steal the patterns that work for your setup. The ROI is immediate."
+    },
+    {
+      "category": "AI FRAMEWORK",
+      "headline": "The agent that grows with you",
+      "path": "NousResearch / hermes-agent",
+      "description": "Hermes Agent is a full-stack AI agent framework built for long-horizon tasks, continuous learning, and deep tool integration.",
+      "stars": "90.5k",
+      "weekStars": "↑ 53.1k this week",
+      "lang": "Python",
+      "security": "🟡 Vigilance — heavy deps, cloud API calls, review before prod",
+      "tags": ["claude-agents", "multi-agent", "memory", "python"],
+      "whyItMatters": "The hierarchical memory architecture (working / episodic / semantic) is the real lesson here. Even if you don't use Hermes directly, the pattern is worth understanding and replicating in your own agent systems."
+    },
+    {
+      "category": "MULTI-AGENT",
+      "headline": "Turn coding agents into real teammates",
+      "path": "multica-ai / multica",
+      "description": "The open-source managed agents platform — orchestrate specialized AI agents with shared state, roles, and persistent context across tasks.",
+      "stars": "13.8k",
+      "weekStars": "↑ 10.9k this week",
+      "lang": "TypeScript",
+      "security": "🟡 Vigilance — cloud-managed, review data retention policy",
+      "tags": ["multi-agent", "workflow", "typescript", "automation"],
+      "whyItMatters": "Managed agent orchestration without the plumbing. The shared-state model between agents is genuinely novel — most open-source alternatives are stateless. Worth benchmarking against custom setups."
+    },
+    {
+      "category": "AI CODING",
+      "headline": "Make AI coding deterministic",
+      "path": "coleam00 / Archon",
+      "description": "The first open-source harness builder for AI coding. Define repeatable, testable workflows that produce consistent output every time.",
+      "stars": "18.3k",
+      "weekStars": "↑ 4.3k this week",
+      "lang": "TypeScript",
+      "security": "🟢 Safe — local execution, no telemetry found",
+      "tags": ["agentic-coding", "workflow", "typescript", "claude-code"],
+      "whyItMatters": "The core insight: AI coding is non-deterministic by default, but your CI/CD pipeline cannot be. Archon's harness model is the missing layer between 'Claude wrote some code' and 'this ships to prod'."
+    },
+    {
+      "category": "DOCUMENT AI",
+      "headline": "Every file format, one Markdown output",
+      "path": "microsoft / markitdown",
+      "description": "Python tool for converting files and office documents to Markdown — PDF, DOCX, XLSX, images, audio transcription, and more.",
+      "stars": "109.6k",
+      "weekStars": "↑ 15.8k this week",
+      "lang": "Python",
+      "security": "🟢 Safe — MIT, Microsoft maintained, no external calls by default",
+      "tags": ["python", "automation", "pdf", "workflow"],
+      "whyItMatters": "The missing pre-processing step for any RAG pipeline or document-driven agent. Converts messy real-world files into clean Markdown that LLMs can actually reason about. 109k stars don't lie."
+    },
+    {
+      "category": "AI SKILLS",
+      "headline": "Production-grade skills for coding agents",
+      "path": "addyosmani / agent-skills",
+      "description": "A curated collection of production-grade engineering skills built specifically for AI coding agents — performance, testing, architecture.",
+      "stars": "16.0k",
+      "weekStars": "↑ 6.7k this week",
+      "lang": "Shell",
+      "security": "🟢 Safe — Shell/Markdown only, read-only skills, no network calls",
+      "tags": ["claude-code", "skills", "agentic-coding", "productivity"],
+      "whyItMatters": "Addy Osmani (Google Chrome) curating Claude Code skills is a strong signal. These aren't toy examples — they're production patterns from engineers shipping at scale. Direct drop-in value."
+    },
+    {
+      "category": "AI MEMORY",
+      "headline": "Claude remembers everything, always",
+      "path": "thedotmack / claude-mem",
+      "description": "A Claude Code plugin that automatically captures every action, decision, and artifact during sessions — zero manual intervention required.",
+      "stars": "58.1k",
+      "weekStars": "↑ 10.8k this week",
+      "lang": "TypeScript",
+      "security": "🟢 Safe — local SQLite storage, no external calls, MIT",
+      "tags": ["claude-code", "memory", "mcp", "productivity"],
+      "whyItMatters": "Persistent memory is the single biggest gap in Claude Code workflows. This plugin closes it without any manual effort. The auto-capture model means you never lose context between sessions — set it and forget it."
+    },
+    {
+      "category": "FINANCE AI",
+      "headline": "Twelve AI analysts, one hedge fund",
+      "path": "virattt / ai-hedge-fund",
+      "description": "An AI Hedge Fund Team — specialized agents for value investing, sentiment analysis, risk management, and portfolio optimization.",
+      "stars": "55.2k",
+      "weekStars": "↑ 4.3k this week",
+      "lang": "Python",
+      "security": "🟡 Vigilance — hits financial APIs, review data permissions",
+      "tags": ["multi-agent", "python", "pipeline", "llm-framework"],
+      "whyItMatters": "The real value isn't finance — it's the multi-specialist agent pattern. Each agent has a narrow job, strict tool access, and passes structured output downstream. A clean reference architecture for any domain."
+    }
+  ]
+}

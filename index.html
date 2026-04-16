@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevWatch — Curated GitHub Repos, Weekly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ── MAGAZINE WRAPPER ───────────────────────────────────────────── */
+.magazine {
+  display: flex;
+  height: 100vh;
+  transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.page.dark  { background: #0a0a0a; color: #f0f0f0; }
+.page.light { background: #f2f0eb; color: #0d0d0d; }
+
+/* ── COVER ──────────────────────────────────────────────────────── */
+.cover-ghost {
+  position: absolute;
+  right: -4vw;
+  top: 50%;
+  transform: translateY(-52%);
+  font-family: 'Playfair Display', serif;
+  font-size: 42vw;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  color: rgba(240,240,240,0.03);
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 8vw;
+}
+
+.cover-kicker {
+  font-size: max(10px, 0.78vw);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 4vh;
+}
+
+.cover-rule {
+  width: 5vw;
+  height: 1px;
+  background: rgba(240,240,240,0.2);
+  margin-bottom: 3.5vh;
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 13vw;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  margin-bottom: 4vh;
+}
+
+.cover-subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(17px, 1.7vw);
+  font-weight: 300;
+  line-height: 1.55;
+  opacity: 0.72;
+  max-width: 38vw;
+  margin-bottom: 5vh;
+}
+
+.cover-meta { font-size: max(10px, 0.68vw); letter-spacing: 0.18em; opacity: 0.25; text-transform: uppercase; }
+
+/* ── REPO PAGES ─────────────────────────────────────────────────── */
+.repo-page { display: flex; height: 100%; width: 100%; }
+
+.repo-left {
+  width: 55%;
+  padding: 7vh 4vw 10vh 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.repo-right {
+  width: 45%;
+  padding: 7vh 5vw 10vh 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page.light .repo-right { border-left: 1px solid rgba(13,13,13,0.1); }
+.page.dark  .repo-right { border-left: 1px solid rgba(240,240,240,0.1); }
+
+.ghost-rank {
+  position: absolute;
+  left: -1.5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 30vw;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.04em;
+}
+
+.page.light .ghost-rank { color: rgba(13,13,13,0.04); }
+.page.dark  .ghost-rank { color: rgba(240,240,240,0.04); }
+
+.repo-left-inner { position: relative; z-index: 1; }
+
+.category-tag {
+  font-size: max(10px, 0.72vw);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.38;
+  margin-bottom: 3vh;
+}
+
+.repo-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: max(26px, 4.8vw);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 3vh;
+}
+
+.repo-path {
+  font-size: max(11px, 0.8vw);
+  letter-spacing: 0.05em;
+  opacity: 0.4;
+  margin-bottom: 2.5vh;
+}
+
+.repo-description {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(17px, 1.45vw);
+  font-weight: 300;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+/* ── RIGHT COLUMN ───────────────────────────────────────────────── */
+.star-count {
+  font-family: 'Playfair Display', serif;
+  font-size: max(38px, 6.5vw);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.6vh;
+}
+
+.star-label { font-size: max(9px, 0.65vw); letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.32; margin-bottom: 1vh; }
+.week-stars { font-size: max(10px, 0.7vw); letter-spacing: 0.1em; opacity: 0.42; margin-bottom: 3.5vh; }
+
+.lang-tag {
+  display: inline-block;
+  font-size: max(9px, 0.7vw);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.45em 1em;
+  margin-bottom: 1.5vh;
+  border: 1px solid currentColor;
+  opacity: 0.48;
+  width: fit-content;
+}
+
+.security-badge {
+  font-size: max(9px, 0.68vw);
+  letter-spacing: 0.12em;
+  opacity: 0.55;
+  margin-bottom: 4vh;
+}
+
+.callout {
+  padding: 2.5vh 2vw;
+  border-left: 4px solid currentColor;
+}
+
+.page.light .callout { background: rgba(13,13,13,0.05); border-left-color: rgba(13,13,13,0.6); }
+.page.dark  .callout { background: rgba(240,240,240,0.055); border-left-color: rgba(240,240,240,0.6); }
+
+.callout-label { font-size: max(9px, 0.6vw); letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.35; margin-bottom: 1.5vh; }
+
+.callout-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(13px, 1.08vw);
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* ── BACK COVER ─────────────────────────────────────────────────── */
+.back-ghost {
+  position: absolute;
+  left: -4vw;
+  top: 50%;
+  transform: translateY(-48%);
+  font-family: 'Playfair Display', serif;
+  font-size: 42vw;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  color: rgba(240,240,240,0.022);
+}
+
+.back-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  padding: 8vw;
+  text-align: right;
+}
+
+.back-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(17px, 2vw);
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.65;
+  margin-bottom: 3vh;
+}
+
+.back-meta { font-size: max(10px, 0.7vw); letter-spacing: 0.2em; opacity: 0.22; text-transform: uppercase; margin-bottom: 1.5vh; }
+.back-link { font-size: max(9px, 0.6vw); letter-spacing: 0.15em; opacity: 0.3; }
+.back-link a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+/* ── NAV ────────────────────────────────────────────────────────── */
+.dots {
+  position: fixed;
+  bottom: 3.5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  z-index: 1000;
+}
+
+.dot { width: 5px; height: 5px; border-radius: 50%; background: #888; cursor: pointer; transition: all 0.3s; opacity: 0.22; }
+.dot.active { opacity: 0.85; transform: scale(1.5); }
+
+.arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2.5vh 2.5vw;
+  z-index: 1000;
+  color: #888;
+  font-size: max(16px, 1.4vw);
+  opacity: 0.18;
+  transition: opacity 0.2s;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.arrow:hover { opacity: 0.55; }
+.arrow.left  { left: 0; }
+.arrow.right { right: 0; }
+
+.page-num {
+  position: fixed;
+  top: 3vh;
+  right: 3vw;
+  font-size: max(9px, 0.66vw);
+  letter-spacing: 0.2em;
+  color: #888;
+  opacity: 0.28;
+  z-index: 1000;
+}
+
+/* ── TAGS ───────────────────────────────────────────────────────── */
+.tags-row { display: flex; flex-wrap: wrap; gap: 0.5vh; margin-bottom: 3.5vh; }
+.tag {
+  font-size: max(8px, 0.58vw);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  padding: 0.2em 0.6em;
+  border: 1px solid currentColor;
+}
+</style>
+</head>
+<body>
+
+<div class="magazine" id="magazine">
+  <!-- pages injected by JS -->
+</div>
+
+<div class="dots"  id="dots"></div>
+<button class="arrow left"  id="arrowLeft">←</button>
+<button class="arrow right" id="arrowRight">→</button>
+<div class="page-num" id="pageNum"></div>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────
+// REPOS_DATA_PLACEHOLDER
+const REPOS_DATA = [{"category": "AI AGENTS", "headline": "The CLAUDE.md that changed everything", "path": "forrestchang / andrej-karpathy-skills", "description": "A single CLAUDE.md file designed to fundamentally improve Claude Code behavior — inspired by Karpathy's engineering philosophy.", "stars": "44.2k", "weekStars": "↑ 30.9k this week", "lang": "Markdown", "security": "🟢 Safe — Markdown only, zero runtime, zero deps", "tags": ["claude-code", "prompt-engineering", "agentic-coding"], "whyItMatters": "A single file that measurably improves how any Claude Code instance reasons and acts. Read it, steal the patterns that work for your setup. The ROI is immediate."}, {"category": "AI FRAMEWORK", "headline": "The agent that grows with you", "path": "NousResearch / hermes-agent", "description": "Hermes Agent is a full-stack AI agent framework built for long-horizon tasks, continuous learning, and deep tool integration.", "stars": "90.5k", "weekStars": "↑ 53.1k this week", "lang": "Python", "security": "🟡 Vigilance — heavy deps, cloud API calls, review before prod", "tags": ["claude-agents", "multi-agent", "memory", "python"], "whyItMatters": "The hierarchical memory architecture (working / episodic / semantic) is the real lesson here. Even if you don't use Hermes directly, the pattern is worth understanding and replicating in your own agent systems."}, {"category": "MULTI-AGENT", "headline": "Turn coding agents into real teammates", "path": "multica-ai / multica", "description": "The open-source managed agents platform — orchestrate specialized AI agents with shared state, roles, and persistent context across tasks.", "stars": "13.8k", "weekStars": "↑ 10.9k this week", "lang": "TypeScript", "security": "🟡 Vigilance — cloud-managed, review data retention policy", "tags": ["multi-agent", "workflow", "typescript", "automation"], "whyItMatters": "Managed agent orchestration without the plumbing. The shared-state model between agents is genuinely novel — most open-source alternatives are stateless. Worth benchmarking against custom setups."}, {"category": "AI CODING", "headline": "Make AI coding deterministic", "path": "coleam00 / Archon", "description": "The first open-source harness builder for AI coding. Define repeatable, testable workflows that produce consistent output every time.", "stars": "18.3k", "weekStars": "↑ 4.3k this week", "lang": "TypeScript", "security": "🟢 Safe — local execution, no telemetry found", "tags": ["agentic-coding", "workflow", "typescript", "claude-code"], "whyItMatters": "The core insight: AI coding is non-deterministic by default, but your CI/CD pipeline cannot be. Archon's harness model is the missing layer between 'Claude wrote some code' and 'this ships to prod'."}, {"category": "DOCUMENT AI", "headline": "Every file format, one Markdown output", "path": "microsoft / markitdown", "description": "Python tool for converting files and office documents to Markdown — PDF, DOCX, XLSX, images, audio transcription, and more.", "stars": "109.6k", "weekStars": "↑ 15.8k this week", "lang": "Python", "security": "🟢 Safe — MIT, Microsoft maintained, no external calls by default", "tags": ["python", "automation", "pdf", "workflow"], "whyItMatters": "The missing pre-processing step for any RAG pipeline or document-driven agent. Converts messy real-world files into clean Markdown that LLMs can actually reason about. 109k stars don't lie."}, {"category": "AI SKILLS", "headline": "Production-grade skills for coding agents", "path": "addyosmani / agent-skills", "description": "A curated collection of production-grade engineering skills built specifically for AI coding agents — performance, testing, architecture.", "stars": "16.0k", "weekStars": "↑ 6.7k this week", "lang": "Shell", "security": "🟢 Safe — Shell/Markdown only, read-only skills, no network calls", "tags": ["claude-code", "skills", "agentic-coding", "productivity"], "whyItMatters": "Addy Osmani (Google Chrome) curating Claude Code skills is a strong signal. These aren't toy examples — they're production patterns from engineers shipping at scale. Direct drop-in value."}, {"category": "AI MEMORY", "headline": "Claude remembers everything, always", "path": "thedotmack / claude-mem", "description": "A Claude Code plugin that automatically captures every action, decision, and artifact during sessions — zero manual intervention required.", "stars": "58.1k", "weekStars": "↑ 10.8k this week", "lang": "TypeScript", "security": "🟢 Safe — local SQLite storage, no external calls, MIT", "tags": ["claude-code", "memory", "mcp", "productivity"], "whyItMatters": "Persistent memory is the single biggest gap in Claude Code workflows. This plugin closes it without any manual effort. The auto-capture model means you never lose context between sessions — set it and forget it."}, {"category": "FINANCE AI", "headline": "Twelve AI analysts, one hedge fund", "path": "virattt / ai-hedge-fund", "description": "An AI Hedge Fund Team — specialized agents for value investing, sentiment analysis, risk management, and portfolio optimization.", "stars": "55.2k", "weekStars": "↑ 4.3k this week", "lang": "Python", "security": "🟡 Vigilance — hits financial APIs, review data permissions", "tags": ["multi-agent", "python", "pipeline", "llm-framework"], "whyItMatters": "The real value isn't finance — it's the multi-specialist agent pattern. Each agent has a narrow job, strict tool access, and passes structured output downstream. A clean reference architecture for any domain."}];
+const ISSUE_META = {"kicker": "Issue №16 · Week 16, 2026 · Security-Audited", "subtitle": "The 8 repos worth your attention this week."};
+
+// ── BUILD ─────────────────────────────────────────────────────────
+const magazine = document.getElementById('magazine');
+const TOTAL = REPOS_DATA.length + 2; // cover + repos + back
+
+// Cover
+const cover = document.createElement('div');
+cover.className = 'page dark';
+cover.innerHTML = `
+  <div class="cover-ghost">D</div>
+  <div class="cover-content">
+    <div class="cover-kicker">${ISSUE_META.kicker}</div>
+    <div class="cover-rule"></div>
+    <div class="cover-title">DevWatch</div>
+    <div class="cover-subtitle">${ISSUE_META.subtitle}</div>
+    <div class="cover-meta">github.com/trending · curated weekly</div>
+  </div>
+`;
+magazine.appendChild(cover);
+
+// Repo pages
+REPOS_DATA.forEach((repo, i) => {
+  const isDark = i % 2 !== 0;
+  const page = document.createElement('div');
+  page.className = `page ${isDark ? 'dark' : 'light'}`;
+
+  const tagsHtml = (repo.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+
+  page.innerHTML = `
+    <div class="repo-page">
+      <div class="repo-left">
+        <div class="ghost-rank">${i + 1}</div>
+        <div class="repo-left-inner">
+          <div class="category-tag">№${String(i+1).padStart(2,'0')} — ${repo.category}</div>
+          <div class="repo-headline">${repo.headline}</div>
+          <div class="repo-path">${repo.path}</div>
+          <div class="repo-description">${repo.description}</div>
+        </div>
+      </div>
+      <div class="repo-right">
+        <div class="star-count">★ ${repo.stars}</div>
+        <div class="star-label">Stars</div>
+        <div class="week-stars">${repo.weekStars}</div>
+        <div class="lang-tag">${repo.lang}</div>
+        <div class="security-badge">${repo.security}</div>
+        <div class="tags-row">${tagsHtml}</div>
+        <div class="callout">
+          <div class="callout-label">Why it matters →</div>
+          <div class="callout-text">${repo.whyItMatters}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  magazine.appendChild(page);
+});
+
+// Back cover
+const back = document.createElement('div');
+back.className = 'page dark';
+back.innerHTML = `
+  <div class="back-ghost">W</div>
+  <div class="back-content">
+    <div class="back-tagline">"The repos that actually matter."</div>
+    <div class="back-meta">devwatch · curated weekly · security-audited</div>
+    <div class="back-link"><a href="https://github.com/a-foutoyet/devwatch">github.com/a-foutoyet/devwatch</a></div>
+  </div>
+`;
+magazine.appendChild(back);
+
+// Update magazine width
+magazine.style.width = `calc(${TOTAL} * 100vw)`;
+
+// ── NAV ──────────────────────────────────────────────────────────
+let current = 0;
+let isAnimating = false;
+
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < TOTAL; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goTo(i));
+  dotsEl.appendChild(dot);
+}
+
+function updateUI() {
+  dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  document.getElementById('pageNum').textContent = `${current + 1} / ${TOTAL}`;
+}
+
+function goTo(n) {
+  if (isAnimating) return;
+  n = Math.max(0, Math.min(TOTAL - 1, n));
+  if (n === current) return;
+  isAnimating = true;
+  current = n;
+  magazine.style.transform = `translateX(-${current * 100}vw)`;
+  updateUI();
+  setTimeout(() => { isAnimating = false; }, 700);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goTo(current + 1); }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goTo(current - 1); }
+});
+
+let lastWheel = 0;
+document.addEventListener('wheel', e => {
+  e.preventDefault();
+  const now = Date.now();
+  if (now - lastWheel < 600) return;
+  lastWheel = now;
+  if (e.deltaX > 20 || e.deltaY > 20) goTo(current + 1);
+  else if (e.deltaX < -20 || e.deltaY < -20) goTo(current - 1);
+}, { passive: false });
+
+let tx = 0, ty = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].clientX;
+  const dy = ty - e.changedTouches[0].clientY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) dx > 0 ? goTo(current + 1) : goTo(current - 1);
+}, { passive: true });
+
+document.getElementById('arrowLeft').addEventListener('click',  () => goTo(current - 1));
+document.getElementById('arrowRight').addEventListener('click', () => goTo(current + 1));
+
+updateUI();
+</script>
+</body>
+</html>
