@@ -378,6 +378,54 @@ html, body {
   padding: 0.2em 0.6em;
   border: 1px solid currentColor;
 }
+
+/* ── MOBILE ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page { overflow-y: auto; overflow-x: hidden; }
+
+  /* Cover */
+  .cover-ghost { font-size: 80vw; right: -8vw; top: 40%; }
+  .cover-content { padding: 12vh 8vw 14vh; }
+  .cover-title { font-size: 18vw; }
+  .cover-subtitle { font-size: max(14px, 3.5vw); }
+  .cover-kicker { font-size: max(8px, 2.2vw); }
+
+  /* Repo pages: stack left then right */
+  .repo-page { flex-direction: column; height: auto; min-height: 100vh; overflow-x: hidden; }
+
+  .repo-left {
+    width: 100%;
+    max-width: 100%;
+    padding: 10vh 7vw 4vh;
+    min-height: auto;
+    overflow: hidden;
+  }
+  .repo-right {
+    width: 100%;
+    max-width: 100%;
+    padding: 4vh 7vw 14vh;
+    border-left: none !important;
+    border-top: 1px solid rgba(128,128,128,0.15);
+    overflow: hidden;
+  }
+
+  .ghost-rank { font-size: 52vw; opacity: 0.025; }
+  .repo-headline { font-size: 9vw; }
+  .star-count { font-size: 15vw; }
+  .star-label { font-size: max(8px, 2.2vw); }
+  .week-stars { font-size: max(9px, 2.5vw); }
+  .security-badge { font-size: max(8px, 2.5vw); }
+  .security-note { font-size: max(12px, 3vw); }
+  .callout-text { font-size: max(14px, 3.5vw); }
+
+  /* Back cover */
+  .back-content { padding: 12vh 8vw; }
+  .back-tagline { font-size: 8vw; }
+
+  /* Nav */
+  .arrow { display: none; }
+  .page-num { font-size: max(8px, 2.5vw); }
+}
 </style>
 </head>
 <body>
