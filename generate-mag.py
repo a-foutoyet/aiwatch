@@ -21,8 +21,8 @@ def generate(repos_json_path: str):
         "subtitle": f"Les {len(repos)} repos qui valent votre attention cette semaine."
     }
 
-    # Read template
-    with open("index.html") as f:
+    # Read template (never overwrite the template itself)
+    with open("_template.html") as f:
         html = f.read()
 
     # Inject data
