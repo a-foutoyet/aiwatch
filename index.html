@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DevWatch — Curated GitHub Repos, Weekly</title>
+<title>AI Watch — Curated AI Repos, Weekly</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -305,6 +305,18 @@ html, body {
   z-index: 1000;
 }
 
+.byline {
+  position: fixed;
+  bottom: 3.5vh;
+  left: 3vw;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: max(8px, 0.58vw);
+  letter-spacing: 0.15em;
+  color: #888;
+  opacity: 0.22;
+  z-index: 1000;
+}
+
 /* ── TAGS ───────────────────────────────────────────────────────── */
 .tags-row { display: flex; flex-wrap: wrap; gap: 0.5vh; margin-bottom: 3.5vh; }
 .tag {
@@ -326,6 +338,7 @@ html, body {
 <div class="dots"  id="dots"></div>
 <button class="arrow left"  id="arrowLeft">←</button>
 <button class="arrow right" id="arrowRight">→</button>
+<div class="byline">@allfordesign</div>
 <div class="page-num" id="pageNum"></div>
 
 <script>
@@ -346,7 +359,7 @@ cover.innerHTML = `
   <div class="cover-content">
     <div class="cover-kicker">${ISSUE_META.kicker}</div>
     <div class="cover-rule"></div>
-    <div class="cover-title">DevWatch</div>
+    <div class="cover-title">AI Watch</div>
     <div class="cover-subtitle">${ISSUE_META.subtitle}</div>
     <div class="cover-meta">github.com/trending · curated weekly</div>
   </div>
@@ -396,8 +409,9 @@ back.innerHTML = `
   <div class="back-ghost">W</div>
   <div class="back-content">
     <div class="back-tagline">"The repos that actually matter."</div>
-    <div class="back-meta">devwatch · curated weekly · security-audited</div>
-    <div class="back-link"><a href="https://github.com/a-foutoyet/devwatch">github.com/a-foutoyet/devwatch</a></div>
+    <div class="back-meta">AI Watch · curated weekly · security-audited</div>
+    <div class="back-link"><a href="https://github.com/a-foutoyet/aiwatch">github.com/a-foutoyet/aiwatch</a></div>
+    <div style="margin-top:1.5vh; font-size:max(10px,0.7vw); letter-spacing:0.18em; opacity:0.4;">@allfordesign</div>
   </div>
 `;
 magazine.appendChild(back);
