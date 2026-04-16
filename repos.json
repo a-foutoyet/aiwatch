@@ -2,99 +2,99 @@
   "repos": [
     {
       "category": "AI AGENTS",
-      "headline": "The CLAUDE.md that changed everything",
+      "headline": "Le CLAUDE.md qui a tout changé",
       "path": "forrestchang / andrej-karpathy-skills",
-      "description": "A single CLAUDE.md file designed to fundamentally improve Claude Code behavior — inspired by Karpathy's engineering philosophy.",
+      "description": "Un seul fichier CLAUDE.md conçu pour améliorer fondamentalement le comportement de Claude Code — inspiré de la philosophie d'ingénierie de Karpathy.",
       "stars": "44.2k",
-      "weekStars": "↑ 30.9k this week",
+      "weekStars": "↑ 30.9k cette semaine",
       "lang": "Markdown",
-      "security": "🟢 Safe — Markdown only, zero runtime, zero deps",
+      "security": "🟢 Safe — Markdown uniquement, zéro runtime, zéro dépendance",
       "tags": ["claude-code", "prompt-engineering", "agentic-coding"],
-      "whyItMatters": "A single file that measurably improves how any Claude Code instance reasons and acts. Read it, steal the patterns that work for your setup. The ROI is immediate."
+      "whyItMatters": "Un fichier unique qui améliore mesurably la façon dont Claude Code raisonne et agit. Lisez-le, volez les patterns qui fonctionnent pour votre setup. Le ROI est immédiat."
     },
     {
       "category": "AI FRAMEWORK",
-      "headline": "The agent that grows with you",
+      "headline": "L'agent qui grandit avec vous",
       "path": "NousResearch / hermes-agent",
-      "description": "Hermes Agent is a full-stack AI agent framework built for long-horizon tasks, continuous learning, and deep tool integration.",
+      "description": "Hermes Agent est un framework d'agents IA complet pensé pour les tâches longues, l'apprentissage continu et l'intégration profonde d'outils.",
       "stars": "90.5k",
-      "weekStars": "↑ 53.1k this week",
+      "weekStars": "↑ 53.1k cette semaine",
       "lang": "Python",
-      "security": "🟡 Vigilance — heavy deps, cloud API calls, review before prod",
+      "security": "🟡 Vigilance — dépendances lourdes, appels API cloud, à auditer avant prod",
       "tags": ["claude-agents", "multi-agent", "memory", "python"],
-      "whyItMatters": "The hierarchical memory architecture (working / episodic / semantic) is the real lesson here. Even if you don't use Hermes directly, the pattern is worth understanding and replicating in your own agent systems."
+      "whyItMatters": "L'architecture mémoire hiérarchique (working / episodic / semantic) est la vraie leçon ici. Même sans utiliser Hermes directement, ce pattern vaut la peine d'être compris et reproduit dans vos propres systèmes d'agents."
     },
     {
       "category": "MULTI-AGENT",
-      "headline": "Turn coding agents into real teammates",
+      "headline": "Transformez vos agents en vrais coéquipiers",
       "path": "multica-ai / multica",
-      "description": "The open-source managed agents platform — orchestrate specialized AI agents with shared state, roles, and persistent context across tasks.",
+      "description": "La plateforme open-source de gestion d'agents — orchestrez des agents IA spécialisés avec état partagé, rôles définis et contexte persistant.",
       "stars": "13.8k",
-      "weekStars": "↑ 10.9k this week",
+      "weekStars": "↑ 10.9k cette semaine",
       "lang": "TypeScript",
-      "security": "🟡 Vigilance — cloud-managed, review data retention policy",
+      "security": "🟡 Vigilance — cloud managé, vérifier la politique de rétention des données",
       "tags": ["multi-agent", "workflow", "typescript", "automation"],
-      "whyItMatters": "Managed agent orchestration without the plumbing. The shared-state model between agents is genuinely novel — most open-source alternatives are stateless. Worth benchmarking against custom setups."
+      "whyItMatters": "Orchestration d'agents managée sans la plomberie. Le modèle d'état partagé entre agents est genuinement nouveau — la plupart des alternatives open-source sont stateless. À benchmarker."
     },
     {
       "category": "AI CODING",
-      "headline": "Make AI coding deterministic",
+      "headline": "Rendez le coding IA déterministe",
       "path": "coleam00 / Archon",
-      "description": "The first open-source harness builder for AI coding. Define repeatable, testable workflows that produce consistent output every time.",
+      "description": "Le premier constructeur de harness open-source pour le coding IA. Définissez des workflows reproductibles et testables qui produisent des résultats constants.",
       "stars": "18.3k",
-      "weekStars": "↑ 4.3k this week",
+      "weekStars": "↑ 4.3k cette semaine",
       "lang": "TypeScript",
-      "security": "🟢 Safe — local execution, no telemetry found",
+      "security": "🟢 Safe — exécution locale, aucune télémétrie détectée",
       "tags": ["agentic-coding", "workflow", "typescript", "claude-code"],
-      "whyItMatters": "The core insight: AI coding is non-deterministic by default, but your CI/CD pipeline cannot be. Archon's harness model is the missing layer between 'Claude wrote some code' and 'this ships to prod'."
+      "whyItMatters": "L'insight clé : le coding IA est non-déterministe par défaut, mais votre pipeline CI/CD ne peut pas l'être. Le modèle harness d'Archon est le chaînon manquant entre 'Claude a écrit du code' et 'ça part en prod'."
     },
     {
       "category": "DOCUMENT AI",
-      "headline": "Every file format, one Markdown output",
+      "headline": "Tous les formats, une seule sortie Markdown",
       "path": "microsoft / markitdown",
-      "description": "Python tool for converting files and office documents to Markdown — PDF, DOCX, XLSX, images, audio transcription, and more.",
+      "description": "Outil Python pour convertir fichiers et documents bureautiques en Markdown — PDF, DOCX, XLSX, images, transcription audio et plus.",
       "stars": "109.6k",
-      "weekStars": "↑ 15.8k this week",
+      "weekStars": "↑ 15.8k cette semaine",
       "lang": "Python",
-      "security": "🟢 Safe — MIT, Microsoft maintained, no external calls by default",
+      "security": "🟢 Safe — MIT, maintenu par Microsoft, aucun appel externe par défaut",
       "tags": ["python", "automation", "pdf", "workflow"],
-      "whyItMatters": "The missing pre-processing step for any RAG pipeline or document-driven agent. Converts messy real-world files into clean Markdown that LLMs can actually reason about. 109k stars don't lie."
+      "whyItMatters": "L'étape de pré-traitement manquante pour tout pipeline RAG ou agent documentaire. Convertit des fichiers réels et désordonnés en Markdown propre que les LLMs peuvent réellement exploiter. 109k étoiles ne mentent pas."
     },
     {
       "category": "AI SKILLS",
-      "headline": "Production-grade skills for coding agents",
+      "headline": "Des skills prod pour vos agents de coding",
       "path": "addyosmani / agent-skills",
-      "description": "A curated collection of production-grade engineering skills built specifically for AI coding agents — performance, testing, architecture.",
+      "description": "Une collection de skills d'ingénierie production-grade conçus spécifiquement pour les agents de coding IA — performance, tests, architecture.",
       "stars": "16.0k",
-      "weekStars": "↑ 6.7k this week",
+      "weekStars": "↑ 6.7k cette semaine",
       "lang": "Shell",
-      "security": "🟢 Safe — Shell/Markdown only, read-only skills, no network calls",
+      "security": "🟢 Safe — Shell/Markdown uniquement, skills en lecture seule, aucun appel réseau",
       "tags": ["claude-code", "skills", "agentic-coding", "productivity"],
-      "whyItMatters": "Addy Osmani (Google Chrome) curating Claude Code skills is a strong signal. These aren't toy examples — they're production patterns from engineers shipping at scale. Direct drop-in value."
+      "whyItMatters": "Addy Osmani (Google Chrome) qui curaite des skills Claude Code, c'est un signal fort. Ce ne sont pas des exemples jouets — ce sont des patterns de prod d'ingénieurs qui shippent à grande échelle."
     },
     {
       "category": "AI MEMORY",
-      "headline": "Claude remembers everything, always",
+      "headline": "Claude se souvient de tout, toujours",
       "path": "thedotmack / claude-mem",
-      "description": "A Claude Code plugin that automatically captures every action, decision, and artifact during sessions — zero manual intervention required.",
+      "description": "Un plugin Claude Code qui capture automatiquement chaque action, décision et artefact pendant les sessions — zéro intervention manuelle.",
       "stars": "58.1k",
-      "weekStars": "↑ 10.8k this week",
+      "weekStars": "↑ 10.8k cette semaine",
       "lang": "TypeScript",
-      "security": "🟢 Safe — local SQLite storage, no external calls, MIT",
+      "security": "🟢 Safe — stockage SQLite local, aucun appel externe, MIT",
       "tags": ["claude-code", "memory", "mcp", "productivity"],
-      "whyItMatters": "Persistent memory is the single biggest gap in Claude Code workflows. This plugin closes it without any manual effort. The auto-capture model means you never lose context between sessions — set it and forget it."
+      "whyItMatters": "La mémoire persistante est le plus grand manque dans les workflows Claude Code. Ce plugin le comble sans aucun effort manuel. Le modèle auto-capture signifie que vous ne perdez plus jamais de contexte entre les sessions."
     },
     {
       "category": "FINANCE AI",
-      "headline": "Twelve AI analysts, one hedge fund",
+      "headline": "Douze analystes IA, un seul hedge fund",
       "path": "virattt / ai-hedge-fund",
-      "description": "An AI Hedge Fund Team — specialized agents for value investing, sentiment analysis, risk management, and portfolio optimization.",
+      "description": "Une équipe d'agents IA pour la finance — agents spécialisés pour le value investing, l'analyse de sentiment, la gestion du risque et l'optimisation de portefeuille.",
       "stars": "55.2k",
-      "weekStars": "↑ 4.3k this week",
+      "weekStars": "↑ 4.3k cette semaine",
       "lang": "Python",
-      "security": "🟡 Vigilance — hits financial APIs, review data permissions",
+      "security": "🟡 Vigilance — appels APIs financières, vérifier les permissions de données",
       "tags": ["multi-agent", "python", "pipeline", "llm-framework"],
-      "whyItMatters": "The real value isn't finance — it's the multi-specialist agent pattern. Each agent has a narrow job, strict tool access, and passes structured output downstream. A clean reference architecture for any domain."
+      "whyItMatters": "La vraie valeur n'est pas la finance — c'est le pattern multi-agents spécialisés. Chaque agent a un rôle précis, un accès limité aux outils, et passe une sortie structurée en aval. Une architecture de référence pour n'importe quel domaine."
     }
   ]
 }

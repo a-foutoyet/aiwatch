@@ -370,7 +370,7 @@ cover.innerHTML = `
     <div class="cover-rule"></div>
     <div class="cover-title">AI Watch</div>
     <div class="cover-subtitle">${ISSUE_META.subtitle}</div>
-    <div class="cover-meta">github.com/trending · curated weekly</div>
+    <div class="cover-meta">github.com/trending · sélection hebdomadaire</div>
   </div>
 `;
 magazine.appendChild(cover);
@@ -396,13 +396,13 @@ REPOS_DATA.forEach((repo, i) => {
       </div>
       <div class="repo-right">
         <div class="star-count">★ ${repo.stars}</div>
-        <div class="star-label">Stars</div>
+        <div class="star-label">Étoiles</div>
         <div class="week-stars">${repo.weekStars}</div>
         <div class="lang-tag">${repo.lang}</div>
         <div class="security-badge">${repo.security}</div>
         <div class="tags-row">${tagsHtml}</div>
         <div class="callout">
-          <div class="callout-label">Why it matters →</div>
+          <div class="callout-label">Pourquoi ça compte →</div>
           <div class="callout-text">${repo.whyItMatters}</div>
         </div>
       </div>
@@ -417,8 +417,8 @@ back.className = 'page dark';
 back.innerHTML = `
   <div class="back-ghost">W</div>
   <div class="back-content">
-    <div class="back-tagline">"The repos that actually matter."</div>
-    <div class="back-meta">AI Watch · curated weekly · security-audited</div>
+    <div class="back-tagline">« Les repos qui comptent vraiment. »</div>
+    <div class="back-meta">AI Watch · sélection hebdo · audité sécurité</div>
     <div class="back-link"><a href="https://github.com/a-foutoyet/aiwatch">github.com/a-foutoyet/aiwatch</a></div>
     <div style="margin-top:1.5vh; font-size:max(10px,0.7vw); letter-spacing:0.18em; opacity:0.4;">@allfordesign</div>
   </div>
