@@ -211,7 +211,18 @@ html, body {
   font-size: max(9px, 0.68vw);
   letter-spacing: 0.12em;
   opacity: 0.55;
-  margin-bottom: 4vh;
+  margin-bottom: 1.2vh;
+}
+
+.security-note {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(11px, 0.85vw);
+  letter-spacing: 0;
+  opacity: 0.62;
+  margin-bottom: 3vh;
+  line-height: 1.5;
+  padding-left: 0.9em;
+  border-left: 2px solid #c87941;
 }
 
 .callout {
@@ -459,6 +470,7 @@ REPOS_DATA.forEach((repo, i) => {
         <div class="week-stars" data-fr="${repo.fr.weekStars}" data-en="${repo.en.weekStars}">${repo.fr.weekStars}</div>
         <div class="lang-tag">${repo.lang}</div>
         <div class="security-badge">${repo.security}</div>
+        ${repo.securityNote ? `<div class="security-note" data-fr="${repo.securityNote.fr}" data-en="${repo.securityNote.en}">${repo.securityNote.fr}</div>` : ''}
         <div class="tags-row">${tagsHtml}</div>
         <div class="callout">
           <div class="callout-label" data-fr="Pourquoi ça compte →" data-en="Why it matters →">Pourquoi ça compte →</div>

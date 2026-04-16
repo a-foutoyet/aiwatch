@@ -26,6 +26,10 @@
       "stars": "90.5k",
       "lang": "Python",
       "security": "🟡 Vigilance — dépendances lourdes, appels API cloud",
+      "securityNote": {
+        "fr": "Requiert des clés API cloud (OpenAI, Anthropic...). Vos prompts transitent par leurs serveurs. Utilisez en dev, pas avec des données sensibles.",
+        "en": "Requires cloud API keys (OpenAI, Anthropic...). Your prompts go through their servers. Keep it to dev environments, away from sensitive data."
+      },
       "tags": ["claude-agents", "multi-agent", "memory", "python"],
       "fr": {
         "headline": "L'agent qui grandit avec vous",
@@ -46,6 +50,10 @@
       "stars": "13.8k",
       "lang": "TypeScript",
       "security": "🟡 Vigilance — cloud managé, vérifier la rétention des données",
+      "securityNote": {
+        "fr": "Plateforme SaaS : vos agents et leurs échanges passent par leurs serveurs. Vérifiez leur politique de rétention avant de connecter des données métier.",
+        "en": "SaaS platform: your agents and their exchanges go through their servers. Check their data retention policy before connecting any business data."
+      },
       "tags": ["multi-agent", "workflow", "typescript", "automation"],
       "fr": {
         "headline": "Transformez vos agents en vrais coéquipiers",
@@ -146,6 +154,10 @@
       "stars": "55.2k",
       "lang": "Python",
       "security": "🟡 Vigilance — appels APIs financières, vérifier les permissions",
+      "securityNote": {
+        "fr": "Se connecte à des APIs financières tierces. Utilisez des clés en lecture seule et un compte sandbox. Jamais un compte réel sans audit préalable.",
+        "en": "Connects to third-party financial APIs. Use read-only keys and a sandbox account for testing. Never connect a live account without a prior audit."
+      },
       "tags": ["multi-agent", "python", "pipeline", "llm-framework"],
       "fr": {
         "headline": "Douze analystes IA, un seul hedge fund",
