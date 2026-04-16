@@ -4,7 +4,7 @@ DevWatch — Magazine Generator
 Injects REPOS_DATA JSON into index.html template.
 Usage: python3 generate-mag.py repos.json
 """
-import json, sys, re
+import json, sys, re, os, shutil
 from datetime import datetime
 
 # English words that must never appear in FR fields
@@ -91,7 +91,12 @@ def generate(repos_json_path: str):
     with open("index.html", "w") as f:
         f.write(html)
 
-    print(f"✅ Generated index.html — {len(repos)} repos — Issue №{issue_num:02d}")
+    # Archive this issue as issues/NN/index.html for permanent URLs
+    archive_dir = os.path.join("issues", f"{issue_num:02d}")
+    os.makedirs(archive_dir, exist_ok=True)
+    shutil.copy("index.html", os.path.join(archive_dir, "index.html"))
+
+    print(f"✅ Generated index.html + issues/{issue_num:02d}/ — {len(repos)} repos — Issue №{issue_num:02d}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

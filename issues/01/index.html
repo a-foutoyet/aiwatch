@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Watch — Curated AI Repos, Weekly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ── MAGAZINE WRAPPER ───────────────────────────────────────────── */
+.magazine {
+  display: flex;
+  height: 100vh;
+  transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.page.dark  { background: #0a0a0a; color: #f0f0f0; }
+.page.light { background: #f2f0eb; color: #0d0d0d; }
+
+/* ── COVER ──────────────────────────────────────────────────────── */
+.cover-ghost {
+  position: absolute;
+  right: -4vw;
+  top: 50%;
+  transform: translateY(-52%);
+  font-family: 'Playfair Display', serif;
+  font-size: 42vw;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  color: rgba(240,240,240,0.03);
+}
+
+.cover-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 8vw;
+}
+
+.cover-kicker {
+  font-size: max(10px, 0.78vw);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 4vh;
+}
+
+.cover-rule {
+  width: 5vw;
+  height: 1px;
+  background: rgba(240,240,240,0.2);
+  margin-bottom: 3.5vh;
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 13vw;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.025em;
+  margin-bottom: 4vh;
+}
+
+.cover-subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(17px, 1.7vw);
+  font-weight: 300;
+  line-height: 1.55;
+  opacity: 0.72;
+  max-width: 38vw;
+  margin-bottom: 5vh;
+}
+
+.cover-meta { font-size: max(10px, 0.68vw); letter-spacing: 0.18em; opacity: 0.25; text-transform: uppercase; }
+
+/* ── REPO PAGES ─────────────────────────────────────────────────── */
+.repo-page { display: flex; height: 100%; width: 100%; }
+
+.repo-left {
+  width: 55%;
+  padding: 7vh 4vw 10vh 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.repo-right {
+  width: 45%;
+  padding: 7vh 5vw 10vh 4vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.page.light .repo-right { border-left: 1px solid rgba(13,13,13,0.1); }
+.page.dark  .repo-right { border-left: 1px solid rgba(240,240,240,0.1); }
+
+.ghost-rank {
+  position: absolute;
+  left: -1.5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 30vw;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.04em;
+}
+
+.page.light .ghost-rank { color: rgba(13,13,13,0.04); }
+.page.dark  .ghost-rank { color: rgba(240,240,240,0.04); }
+
+.repo-left-inner { position: relative; z-index: 1; }
+
+.category-tag {
+  font-size: max(10px, 0.72vw);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.38;
+  margin-bottom: 3vh;
+}
+
+.repo-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: max(26px, 4.8vw);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 3vh;
+}
+
+.repo-path {
+  font-size: max(11px, 0.8vw);
+  letter-spacing: 0.05em;
+  opacity: 0.4;
+  margin-bottom: 2.5vh;
+}
+
+.repo-path a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s;
+}
+.repo-path a:hover { opacity: 1; }
+
+.repo-description {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(17px, 1.45vw);
+  font-weight: 300;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+/* ── RIGHT COLUMN ───────────────────────────────────────────────── */
+.star-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  flex-wrap: wrap;
+}
+.star-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: max(16px, 4vw);
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 0.35em;
+}
+.star-info {
+  display: flex;
+  flex-direction: column;
+}
+.star-count {
+  font-family: 'Playfair Display', serif;
+  font-size: max(38px, 6.5vw);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.6vh;
+}
+
+.star-label { font-size: max(9px, 0.65vw); letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.32; margin-bottom: 1vh; }
+.week-stars { font-size: max(10px, 0.7vw); letter-spacing: 0.1em; opacity: 0.62; margin-bottom: 3.5vh; margin-top: 0.6em; }
+
+.lang-tag {
+  display: inline-block;
+  font-size: max(9px, 0.7vw);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.45em 1em;
+  margin-bottom: 1.5vh;
+  border: 1px solid currentColor;
+  opacity: 0.48;
+  width: fit-content;
+}
+
+.security-badge {
+  font-size: max(9px, 0.68vw);
+  letter-spacing: 0.12em;
+  opacity: 0.55;
+  margin-bottom: 1.2vh;
+}
+
+.security-note {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(11px, 0.85vw);
+  letter-spacing: 0;
+  opacity: 0.62;
+  margin-bottom: 3vh;
+  line-height: 1.5;
+  padding-left: 0.9em;
+  border-left: 2px solid #c87941;
+}
+
+.callout {
+  padding: 2.5vh 2vw;
+  border-left: 4px solid currentColor;
+}
+
+.page.light .callout { background: rgba(13,13,13,0.05); border-left-color: rgba(13,13,13,0.6); }
+.page.dark  .callout { background: rgba(240,240,240,0.055); border-left-color: rgba(240,240,240,0.6); }
+
+.callout-label { font-size: max(9px, 0.6vw); letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.35; margin-bottom: 1.5vh; }
+
+.callout-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(13px, 1.08vw);
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+/* ── BACK COVER ─────────────────────────────────────────────────── */
+.back-ghost {
+  position: absolute;
+  left: -4vw;
+  top: 50%;
+  transform: translateY(-48%);
+  font-family: 'Playfair Display', serif;
+  font-size: 42vw;
+  font-weight: 900;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  color: rgba(240,240,240,0.022);
+}
+
+.back-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+  padding: 8vw;
+  text-align: right;
+}
+
+.back-tagline {
+  font-family: 'Source Serif 4', serif;
+  font-size: max(17px, 2vw);
+  font-weight: 300;
+  font-style: italic;
+  opacity: 0.65;
+  margin-bottom: 3vh;
+}
+
+.back-meta { font-size: max(10px, 0.7vw); letter-spacing: 0.2em; opacity: 0.22; text-transform: uppercase; margin-bottom: 1.5vh; }
+.back-link { font-size: max(9px, 0.6vw); letter-spacing: 0.15em; opacity: 0.3; }
+.back-link a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+
+/* ── NAV ────────────────────────────────────────────────────────── */
+.dots {
+  position: fixed;
+  bottom: 3.5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  z-index: 1000;
+}
+
+.dot { width: 5px; height: 5px; border-radius: 50%; background: #888; cursor: pointer; transition: all 0.3s; opacity: 0.22; }
+.dot.active { opacity: 0.85; transform: scale(1.5); }
+
+.arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2.5vh 2.5vw;
+  z-index: 1000;
+  color: #888;
+  font-size: max(16px, 1.4vw);
+  opacity: 0.18;
+  transition: opacity 0.2s;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.arrow:hover { opacity: 0.55; }
+.arrow.left  { left: 0; }
+.arrow.right { right: 0; }
+
+.lang-tabs {
+  position: fixed;
+  top: 3vh;
+  left: 3vw;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  z-index: 1000;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: max(9px, 0.66vw);
+  letter-spacing: 0.2em;
+}
+
+.lang-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  opacity: 0.25;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.lang-tab:hover { opacity: 0.6; }
+.lang-tab.active { opacity: 0.85; border-bottom: 1px solid #888; padding-bottom: 1px; }
+.lang-sep { color: #888; opacity: 0.2; }
+
+.page-num {
+  position: fixed;
+  top: 3vh;
+  right: 3vw;
+  font-size: max(9px, 0.66vw);
+  letter-spacing: 0.2em;
+  color: #888;
+  opacity: 0.28;
+  z-index: 1000;
+}
+
+.byline {
+  position: fixed;
+  bottom: 3.5vh;
+  left: 3vw;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: max(8px, 0.58vw);
+  letter-spacing: 0.15em;
+  color: #888;
+  opacity: 0.22;
+  z-index: 1000;
+  text-decoration: none;
+}
+
+/* ── TAGS ───────────────────────────────────────────────────────── */
+.tags-row { display: flex; flex-wrap: wrap; gap: 0.5vh; margin-bottom: 3.5vh; }
+.tag {
+  font-size: max(8px, 0.58vw);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  padding: 0.2em 0.6em;
+  border: 1px solid currentColor;
+}
+
+/* ── MOBILE ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page { overflow-y: auto; overflow-x: hidden; }
+
+  /* Cover */
+  .cover-ghost { font-size: 80vw; right: -8vw; top: 40%; }
+  .cover-content { padding: 12vh 8vw 14vh; }
+  .cover-title { font-size: 18vw; }
+  .cover-subtitle { font-size: max(14px, 3.5vw); }
+  .cover-kicker { font-size: max(8px, 2.2vw); }
+
+  /* Repo pages: stack left then right */
+  .repo-page { flex-direction: column; height: auto; min-height: 100vh; overflow-x: hidden; }
+
+  .repo-left {
+    width: 100%;
+    max-width: 100%;
+    padding: 10vh 7vw 4vh;
+    min-height: auto;
+    overflow: hidden;
+  }
+  .repo-right {
+    width: 100%;
+    max-width: 100%;
+    padding: 4vh 7vw 14vh;
+    border-left: none !important;
+    border-top: 1px solid rgba(128,128,128,0.15);
+    overflow: hidden;
+  }
+
+  .ghost-rank { font-size: 52vw; opacity: 0.025; }
+  .repo-headline { font-size: 9vw; }
+  .star-icon { font-size: 9vw; padding-top: 0.5em; }
+  .star-count { font-size: 15vw; }
+  .star-label { font-size: max(8px, 2.2vw); }
+  .week-stars { font-size: max(9px, 2.5vw); }
+  .security-badge { font-size: max(8px, 2.5vw); }
+  .security-note { font-size: max(12px, 3vw); }
+  .callout-text { font-size: max(14px, 3.5vw); }
+
+  /* Back cover */
+  .back-content { padding: 12vh 8vw; }
+  .back-tagline { font-size: 8vw; }
+
+  /* Nav */
+  .arrow { display: none; }
+  .page-num { font-size: max(8px, 2.5vw); }
+
+  /* Bottom nav bar — dots + byline in a fixed bar */
+  .dots {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
+    justify-content: center;
+    padding: 10px 0 calc(12px + env(safe-area-inset-bottom));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    background: rgba(242,240,235,0.90);
+    border-top: 1px solid rgba(13,13,13,0.08);
+  }
+  .dots.dark-bar {
+    background: rgba(10,10,10,0.88);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .dots.light-bar {
+    background: rgba(242,240,235,0.90);
+    border-top: 1px solid rgba(13,13,13,0.08);
+  }
+
+  /* Byline inside the bar, below dots */
+  .byline {
+    position: fixed;
+    bottom: calc(36px + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0.22;
+    font-size: max(8px, 2.2vw);
+    pointer-events: auto;
+    z-index: 1001;
+  }
+
+  /* Extra padding so content doesn't hide behind the bar */
+  .repo-right { padding-bottom: 80px; }
+  .cover-content { padding-bottom: 80px; }
+  .back-content { padding-bottom: 80px; }
+}
+</style>
+</head>
+<body>
+
+<div class="magazine" id="magazine">
+  <!-- pages injected by JS -->
+</div>
+
+<div class="dots"  id="dots"></div>
+<button class="arrow left"  id="arrowLeft">←</button>
+<button class="arrow right" id="arrowRight">→</button>
+<div class="page-num" id="pageNum"></div>
+<div class="lang-tabs">
+  <button class="lang-tab active" id="tabFr" onclick="setLang('fr')">FR</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-tab" id="tabEn" onclick="setLang('en')">EN</button>
+</div>
+
+<script>
+// ── DATA ─────────────────────────────────────────────────────────
+// REPOS_DATA_PLACEHOLDER
+const REPOS_DATA = [{"category": "AI AGENTS", "path": "forrestchang / andrej-karpathy-skills", "stars": "44.2k", "lang": "Markdown", "security": "🟢 Safe — Markdown uniquement, zéro runtime, zéro dépendance", "tags": ["claude-code", "prompt-engineering", "agentic-coding"], "fr": {"headline": "Le CLAUDE.md qui a tout changé", "description": "Un seul fichier CLAUDE.md conçu pour améliorer fondamentalement le comportement de Claude Code, inspiré de la philosophie d'ingénierie de Karpathy.", "weekStars": "↑ 30,9k cette semaine", "whyItMatters": "Un seul fichier qui améliore concrètement la façon dont Claude Code raisonne et agit. Lisez-le, adaptez les patterns à votre setup. Le retour est immédiat. Ça, c'est assez rare pour le noter."}, "en": {"headline": "The CLAUDE.md that changed everything", "description": "A single CLAUDE.md file designed to fundamentally improve Claude Code behavior, inspired by Karpathy's engineering philosophy.", "weekStars": "↑ 30.9k this week", "whyItMatters": "One file that concretely improves how any Claude Code instance reasons and acts. Read it, adapt the patterns to your setup. The ROI is immediate. That alone makes it worth your time."}}, {"category": "AI MEMORY", "path": "thedotmack / claude-mem", "stars": "58.1k", "lang": "TypeScript", "security": "🟢 Safe — stockage SQLite local, aucun appel externe, MIT", "tags": ["claude-code", "memory", "mcp", "productivity"], "fr": {"headline": "Claude se souvient de tout, toujours", "description": "Un plugin Claude Code qui capture automatiquement chaque action, décision et artefact pendant les sessions (zéro intervention manuelle).", "weekStars": "↑ 10,8k cette semaine", "whyItMatters": "La mémoire persistante manque à Claude Code, et tout le monde le sait. Ce plugin règle ça sans rien vous demander : il capture automatiquement actions, décisions, artefacts. Plus de 'on en était où, déjà ?'"}, "en": {"headline": "Claude remembers everything, always", "description": "A Claude Code plugin that automatically captures every action, decision, and artifact during sessions (zero manual intervention required).", "weekStars": "↑ 10.8k this week", "whyItMatters": "Persistent memory is the biggest gap in Claude Code workflows, and everyone knows it. This plugin closes it without asking anything of you. Auto-capture across actions, decisions, artifacts. Never lose context again."}}, {"category": "AI MEMORY", "path": "MemPalace / mempalace", "stars": "46.7k", "lang": "Python", "security": "🟡 Vigilance — télémétrie ChromaDB active, 5 issues sécu ouvertes", "securityNote": {"fr": "Télémétrie PostHog active par défaut via ChromaDB. Ajouter ANONYMIZED_TELEMETRY=False dans votre env. Faire chmod 600 sur les fichiers .sqlite3 générés. Issues sécu ouvertes sur le repo, correctifs en cours.", "en": "PostHog telemetry active by default via ChromaDB. Add ANONYMIZED_TELEMETRY=False to your env. Run chmod 600 on generated .sqlite3 files. Open security issues on the repo, fixes in progress."}, "tags": ["memory", "mcp", "claude-code", "productivity"], "fr": {"headline": "La mémoire qui s'enrichit à chaque session", "description": "Un plugin qui construit une mémoire structurée de votre travail, session après session. Il repère les connexions entre vos projets, décisions et notes — et les retrouve quand vous en avez besoin.", "weekStars": "↑ 2,1k cette semaine", "whyItMatters": "claude-mem capture tout sans distinction. MemPalace va plus loin : il comprend les liens entre vos informations, pas juste les informations elles-mêmes. Les deux ensemble couvrent des cas que ni l'un ni l'autre ne gère seul. On les utilise en parallèle."}, "en": {"headline": "Memory that compounds with every session", "description": "A plugin that builds structured memory from your work, session after session. It maps connections between your projects, decisions and notes — and surfaces them when you need them.", "weekStars": "↑ 2.1k this week", "whyItMatters": "claude-mem captures everything flat. MemPalace maps relationships between information in a graph. Together they cover gaps neither handles alone. We run both in parallel."}}, {"category": "AI CODING", "path": "tirth8205 / code-review-graph", "stars": "10.4k", "lang": "Python", "security": "🟢 Safe — SQLite local, lecture seule, CVEs fastmcp patchées (>=2.14), MIT", "tags": ["code-review", "claude-code", "python", "token-optimization"], "fr": {"headline": "8 fois moins de tokens sur chaque code review", "description": "Un outil qui cartographie votre code source en une carte de relations. Claude navigue cette carte plutôt que de parcourir chaque fichier un par un — résultat : 8x moins de ressources consommées sur les analyses.", "weekStars": "↑ 890 cette semaine", "whyItMatters": "Le principe : au lieu de lire chaque fichier un par un, Claude navigue une carte de votre code déjà construite. Le repo annonce -8x sur les analyses. On l'a installé, testé, ça tient. Sur un projet actif, la différence se sent sur la consommation."}, "en": {"headline": "8x fewer tokens on every code review", "description": "A tool that maps your codebase into a graph of relationships. Claude navigates the graph instead of reading every file one by one — resulting in 8x fewer resources spent on code analysis.", "weekStars": "↑ 890 this week", "whyItMatters": "Instead of reading every file one by one, Claude navigates a pre-built map of your codebase. The repo claims -8x on code analysis. We installed it, tested it, and it holds up. On an active project, you feel the difference on your usage."}}, {"category": "CLAUDE CODE", "path": "shanraisshan / claude-code-best-practice", "stars": "45.1k", "lang": "HTML", "security": "🟢 Safe — HTML/Markdown pur, zéro runtime, zéro dépendance, MIT", "tags": ["claude-code", "productivity", "agentic-coding", "skills"], "fr": {"headline": "Toutes les features Claude Code en un fichier", "description": "Documentation mise à jour quotidiennement par la communauté : Agent Teams, Channels beta, Auto Mode, Ultraplan, Ralph Wiggum Loop, Remote Control /rc.", "weekStars": "↑ 8,3k cette semaine", "whyItMatters": "On avait manqué des features entières. Agent Teams en parallèle, /rc pour contrôle à distance, Auto Mode... tout était là depuis un moment. Ce repo, c'est la doc qu'Anthropic n'a pas encore écrite."}, "en": {"headline": "Every Claude Code feature in one file", "description": "Community-maintained documentation updated daily: Agent Teams, Channels beta, Auto Mode, Ultraplan, Ralph Wiggum Loop, Remote Control /rc.", "weekStars": "↑ 8.3k this week", "whyItMatters": "We had missed entire features. Parallel Agent Teams, /rc for remote control, Auto Mode... it was all there. This repo is the documentation Anthropic hasn't written yet."}}];
+const ISSUE_META = {"fr": {"kicker": "Numéro №01 · Sélection de lancement · Audité sécurité", "subtitle": "Les 5 repos qui valent notre attention cette semaine."}, "en": {"kicker": "Issue №01 · Launch Selection · Security-Audited", "subtitle": "The 5 repos worth our attention this week."}};
+
+// ── LANG ─────────────────────────────────────────────────────────
+let lang = localStorage.getItem('aiwatch-lang') || 'fr';
+
+function t(repo, key) {
+  return (repo[lang] && repo[lang][key]) || repo[key] || '';
+}
+
+function applyLang() {
+  document.documentElement.lang = lang;
+  localStorage.setItem('aiwatch-lang', lang);
+  document.getElementById('tabFr').classList.toggle('active', lang === 'fr');
+  document.getElementById('tabEn').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = lang === 'fr' ? el.dataset.fr : el.dataset.en;
+  });
+}
+
+function setLang(l) {
+  lang = l;
+  applyLang();
+}
+
+// ── BUILD ─────────────────────────────────────────────────────────
+const magazine = document.getElementById('magazine');
+const TOTAL = REPOS_DATA.length + 2;
+
+// Cover
+const cover = document.createElement('div');
+cover.className = 'page dark';
+cover.innerHTML = `
+  <div class="cover-ghost">A</div>
+  <div class="cover-content">
+    <div class="cover-kicker" data-fr="${ISSUE_META.fr.kicker}" data-en="${ISSUE_META.en.kicker}">${ISSUE_META.fr.kicker}</div>
+    <div class="cover-rule"></div>
+    <div class="cover-title">AI Watch</div>
+    <div class="cover-subtitle" data-fr="${ISSUE_META.fr.subtitle}" data-en="${ISSUE_META.en.subtitle}">${ISSUE_META.fr.subtitle}</div>
+    <div class="cover-meta" data-fr="github.com/trending · sélection hebdomadaire" data-en="github.com/trending · curated weekly">github.com/trending · sélection hebdomadaire</div>
+  </div>
+`;
+magazine.appendChild(cover);
+
+// Repo pages
+REPOS_DATA.forEach((repo, i) => {
+  const isDark = i % 2 !== 0;
+  const page = document.createElement('div');
+  page.className = `page ${isDark ? 'dark' : 'light'}`;
+
+  const tagsHtml = (repo.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
+  const ghUrl = `https://github.com/${repo.path.replace(' / ', '/')}`;
+
+  page.innerHTML = `
+    <div class="repo-page">
+      <div class="repo-left">
+        <div class="ghost-rank">${i + 1}</div>
+        <div class="repo-left-inner">
+          <div class="category-tag">№${String(i+1).padStart(2,'0')} — ${repo.category}</div>
+          <div class="repo-headline" data-fr="${repo.fr.headline}" data-en="${repo.en.headline}">${repo.fr.headline}</div>
+          <div class="repo-path"><a href="${ghUrl}" target="_blank" rel="noopener">${repo.path}</a></div>
+          <div class="repo-description" data-fr="${repo.fr.description}" data-en="${repo.en.description}">${repo.fr.description}</div>
+        </div>
+      </div>
+      <div class="repo-right">
+        <div class="star-row">
+          <span class="star-icon">★</span>
+          <div class="star-info">
+            <span class="star-count">${repo.stars}</span>
+            <div class="week-stars" data-fr="${repo.fr.weekStars}" data-en="${repo.en.weekStars}">${repo.fr.weekStars}</div>
+          </div>
+        </div>
+        <div class="lang-tag">${repo.lang}</div>
+        <div class="security-badge">${repo.security}</div>
+        ${repo.securityNote ? `<div class="security-note" data-fr="${repo.securityNote.fr}" data-en="${repo.securityNote.en}">${repo.securityNote.fr}</div>` : ''}
+        <div class="tags-row">${tagsHtml}</div>
+        <div class="callout">
+          <div class="callout-label" data-fr="Pourquoi ça compte →" data-en="Why it matters →">Pourquoi ça compte →</div>
+          <div class="callout-text" data-fr="${repo.fr.whyItMatters}" data-en="${repo.en.whyItMatters}">${repo.fr.whyItMatters}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  magazine.appendChild(page);
+});
+
+// Back cover
+const back = document.createElement('div');
+back.className = 'page dark';
+back.innerHTML = `
+  <div class="back-ghost">W</div>
+  <div class="back-content">
+    <div class="cover-title" style="margin-bottom:3vh;">AI Watch</div>
+    <div class="back-meta" data-fr="AI Watch · sélection hebdo · audité sécurité" data-en="AI Watch · curated weekly · security-audited">AI Watch · sélection hebdo · audité sécurité</div>
+    <div class="back-link"><a href="https://github.com/a-foutoyet/aiwatch">github.com/a-foutoyet/aiwatch</a></div>
+    <a href="https://x.com/allfordesign" target="_blank" rel="noopener" style="margin-top:1.5vh; font-size:8px; letter-spacing:0.18em; color:#8a8a8a; text-decoration:none; display:block;">@allfordesign</a>
+  </div>
+`;
+magazine.appendChild(back);
+
+// Update magazine width
+magazine.style.width = `calc(${TOTAL} * 100vw)`;
+
+// ── NAV ──────────────────────────────────────────────────────────
+let current = 0;
+let isAnimating = false;
+
+const dotsEl = document.getElementById('dots');
+for (let i = 0; i < TOTAL; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goTo(i));
+  dotsEl.appendChild(dot);
+}
+
+function updateUI() {
+  dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  document.getElementById('pageNum').textContent = `${current + 1} / ${TOTAL}`;
+  // Sync dots bar bg with current page theme (mobile only)
+  if (window.innerWidth <= 768) {
+    const pages = document.querySelectorAll('.page');
+    const isDark = pages[current] && pages[current].classList.contains('dark');
+    dotsEl.classList.toggle('dark-bar', isDark);
+    dotsEl.classList.toggle('light-bar', !isDark);
+  }
+}
+
+function goTo(n) {
+  if (isAnimating) return;
+  n = Math.max(0, Math.min(TOTAL - 1, n));
+  if (n === current) return;
+  isAnimating = true;
+  current = n;
+  magazine.style.transform = `translateX(-${current * 100}vw)`;
+  updateUI();
+  setTimeout(() => { isAnimating = false; }, 700);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); goTo(current + 1); }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); goTo(current - 1); }
+});
+
+let lastWheel = 0;
+if (window.innerWidth > 768) {
+  document.addEventListener('wheel', e => {
+    e.preventDefault();
+    const now = Date.now();
+    if (now - lastWheel < 600) return;
+    lastWheel = now;
+    if (e.deltaX > 20 || e.deltaY > 20) goTo(current + 1);
+    else if (e.deltaX < -20 || e.deltaY < -20) goTo(current - 1);
+  }, { passive: false });
+}
+
+let tx = 0, ty = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].clientX;
+  const dy = ty - e.changedTouches[0].clientY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) dx > 0 ? goTo(current + 1) : goTo(current - 1);
+}, { passive: true });
+
+document.getElementById('arrowLeft').addEventListener('click',  () => goTo(current - 1));
+document.getElementById('arrowRight').addEventListener('click', () => goTo(current + 1));
+
+updateUI();
+</script>
+</body>
+</html>
