@@ -303,6 +303,36 @@ html, body {
 .arrow.left  { left: 0; }
 .arrow.right { right: 0; }
 
+.lang-tabs {
+  position: fixed;
+  top: 3vh;
+  left: 3vw;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  z-index: 1000;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: max(9px, 0.66vw);
+  letter-spacing: 0.2em;
+}
+
+.lang-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  opacity: 0.25;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.lang-tab:hover { opacity: 0.6; }
+.lang-tab.active { opacity: 0.85; border-bottom: 1px solid #888; padding-bottom: 1px; }
+.lang-sep { color: #888; opacity: 0.2; }
+
 .page-num {
   position: fixed;
   top: 3vh;
@@ -324,6 +354,7 @@ html, body {
   color: #888;
   opacity: 0.22;
   z-index: 1000;
+  text-decoration: none;
 }
 
 /* ── TAGS ───────────────────────────────────────────────────────── */
@@ -347,8 +378,13 @@ html, body {
 <div class="dots"  id="dots"></div>
 <button class="arrow left"  id="arrowLeft">←</button>
 <button class="arrow right" id="arrowRight">→</button>
-<div class="byline">@allfordesign</div>
+<a class="byline" href="https://x.com/allfordesign" target="_blank" rel="noopener">@allfordesign</a>
 <div class="page-num" id="pageNum"></div>
+<div class="lang-tabs">
+  <button class="lang-tab active" id="tabFr" onclick="setLang('fr')">FR</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-tab" id="tabEn" onclick="setLang('en')">EN</button>
+</div>
 
 <script>
 // ── DATA ─────────────────────────────────────────────────────────
@@ -356,9 +392,31 @@ html, body {
 const REPOS_DATA = __REPOS_DATA__;
 const ISSUE_META = __ISSUE_META__;
 
+// ── LANG ─────────────────────────────────────────────────────────
+let lang = localStorage.getItem('aiwatch-lang') || 'fr';
+
+function t(repo, key) {
+  return (repo[lang] && repo[lang][key]) || repo[key] || '';
+}
+
+function applyLang() {
+  document.documentElement.lang = lang;
+  localStorage.setItem('aiwatch-lang', lang);
+  document.getElementById('tabFr').classList.toggle('active', lang === 'fr');
+  document.getElementById('tabEn').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.textContent = lang === 'fr' ? el.dataset.fr : el.dataset.en;
+  });
+}
+
+function setLang(l) {
+  lang = l;
+  applyLang();
+}
+
 // ── BUILD ─────────────────────────────────────────────────────────
 const magazine = document.getElementById('magazine');
-const TOTAL = REPOS_DATA.length + 2; // cover + repos + back
+const TOTAL = REPOS_DATA.length + 2;
 
 // Cover
 const cover = document.createElement('div');
@@ -366,11 +424,11 @@ cover.className = 'page dark';
 cover.innerHTML = `
   <div class="cover-ghost">D</div>
   <div class="cover-content">
-    <div class="cover-kicker">${ISSUE_META.kicker}</div>
+    <div class="cover-kicker" data-fr="${ISSUE_META.fr.kicker}" data-en="${ISSUE_META.en.kicker}">${ISSUE_META.fr.kicker}</div>
     <div class="cover-rule"></div>
     <div class="cover-title">AI Watch</div>
-    <div class="cover-subtitle">${ISSUE_META.subtitle}</div>
-    <div class="cover-meta">github.com/trending · sélection hebdomadaire</div>
+    <div class="cover-subtitle" data-fr="${ISSUE_META.fr.subtitle}" data-en="${ISSUE_META.en.subtitle}">${ISSUE_META.fr.subtitle}</div>
+    <div class="cover-meta" data-fr="github.com/trending · sélection hebdomadaire" data-en="github.com/trending · curated weekly">github.com/trending · sélection hebdomadaire</div>
   </div>
 `;
 magazine.appendChild(cover);
@@ -381,7 +439,8 @@ REPOS_DATA.forEach((repo, i) => {
   const page = document.createElement('div');
   page.className = `page ${isDark ? 'dark' : 'light'}`;
 
-  const tagsHtml = (repo.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+  const tagsHtml = (repo.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
+  const ghUrl = `https://github.com/${repo.path.replace(' / ', '/')}`;
 
   page.innerHTML = `
     <div class="repo-page">
@@ -389,21 +448,21 @@ REPOS_DATA.forEach((repo, i) => {
         <div class="ghost-rank">${i + 1}</div>
         <div class="repo-left-inner">
           <div class="category-tag">№${String(i+1).padStart(2,'0')} — ${repo.category}</div>
-          <div class="repo-headline">${repo.headline}</div>
-          <div class="repo-path"><a href="https://github.com/${repo.path.replace(' / ', '/')}" target="_blank" rel="noopener">${repo.path}</a></div>
-          <div class="repo-description">${repo.description}</div>
+          <div class="repo-headline" data-fr="${repo.fr.headline}" data-en="${repo.en.headline}">${repo.fr.headline}</div>
+          <div class="repo-path"><a href="${ghUrl}" target="_blank" rel="noopener">${repo.path}</a></div>
+          <div class="repo-description" data-fr="${repo.fr.description}" data-en="${repo.en.description}">${repo.fr.description}</div>
         </div>
       </div>
       <div class="repo-right">
         <div class="star-count">★ ${repo.stars}</div>
-        <div class="star-label">Étoiles</div>
-        <div class="week-stars">${repo.weekStars}</div>
+        <div class="star-label" data-fr="Étoiles" data-en="Stars">Étoiles</div>
+        <div class="week-stars" data-fr="${repo.fr.weekStars}" data-en="${repo.en.weekStars}">${repo.fr.weekStars}</div>
         <div class="lang-tag">${repo.lang}</div>
         <div class="security-badge">${repo.security}</div>
         <div class="tags-row">${tagsHtml}</div>
         <div class="callout">
-          <div class="callout-label">Pourquoi ça compte →</div>
-          <div class="callout-text">${repo.whyItMatters}</div>
+          <div class="callout-label" data-fr="Pourquoi ça compte →" data-en="Why it matters →">Pourquoi ça compte →</div>
+          <div class="callout-text" data-fr="${repo.fr.whyItMatters}" data-en="${repo.en.whyItMatters}">${repo.fr.whyItMatters}</div>
         </div>
       </div>
     </div>
@@ -417,10 +476,10 @@ back.className = 'page dark';
 back.innerHTML = `
   <div class="back-ghost">W</div>
   <div class="back-content">
-    <div class="back-tagline">« Les repos qui comptent vraiment. »</div>
-    <div class="back-meta">AI Watch · sélection hebdo · audité sécurité</div>
+    <div class="back-tagline" data-fr="« Les repos qui comptent vraiment. »" data-en="&quot;The repos that actually matter.&quot;">« Les repos qui comptent vraiment. »</div>
+    <div class="back-meta" data-fr="AI Watch · sélection hebdo · audité sécurité" data-en="AI Watch · curated weekly · security-audited">AI Watch · sélection hebdo · audité sécurité</div>
     <div class="back-link"><a href="https://github.com/a-foutoyet/aiwatch">github.com/a-foutoyet/aiwatch</a></div>
-    <div style="margin-top:1.5vh; font-size:max(10px,0.7vw); letter-spacing:0.18em; opacity:0.4;">@allfordesign</div>
+    <a href="https://x.com/allfordesign" target="_blank" rel="noopener" style="margin-top:1.5vh; font-size:max(10px,0.7vw); letter-spacing:0.18em; opacity:0.4; color:inherit; text-decoration:none; display:block;">@allfordesign</a>
   </div>
 `;
 magazine.appendChild(back);

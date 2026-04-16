@@ -17,8 +17,14 @@ def generate(repos_json_path: str):
     year = now.year
 
     issue_meta = {
-        "kicker": f"Numéro №{week:02d} · Semaine {week}, {year} · Audité sécurité",
-        "subtitle": f"Les {len(repos)} repos qui valent votre attention cette semaine."
+        "fr": {
+            "kicker": f"Numéro №{week:02d} · Semaine {week}, {year} · Audité sécurité",
+            "subtitle": f"Les {len(repos)} repos qui valent votre attention cette semaine."
+        },
+        "en": {
+            "kicker": f"Issue №{week:02d} · Week {week}, {year} · Security-Audited",
+            "subtitle": f"The {len(repos)} repos worth your attention this week."
+        }
     }
 
     # Read template (never overwrite the template itself)
