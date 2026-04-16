@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aiwatch-mag",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "8091", "/tmp/devwatch"],
+      "port": 8091
+    }
+  ]
+}
